@@ -21,7 +21,7 @@ import cv2
 print("[INFO] loading image paths...")
 inh = VGGFace2Prepare(config)
 (trainPaths, trainLabels) = inh.buildTrainingSet()
-(testPaths, testLabels) = inh.buildTestSet()
+(testPaths, testLabels) = inh.buildTestingSet()
 
 # now that we have the total number of images in the dataset that
 # can be used for training, compute the number of images that

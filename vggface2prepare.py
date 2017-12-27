@@ -74,7 +74,7 @@ class VGGFace2Prepare:
 		# labels
 		return (np.array(paths), np.array(labels))
 
-	def buildTestSet(self):
+	def buildTestingSet(self):
 		# initialize the list of image paths and class labels
 		rows = open(self.config.TEST_LIST).read().strip()
 		rows = rows.split("\n")
