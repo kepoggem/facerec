@@ -22,7 +22,7 @@ TRAIN_LIST = path.sep.join([DEVKIT_PATH, "train_list.txt"])
 
 # define the paths to to the validation filenames along with the
 # file that contains the ground-truth validation labels
-VAL_LIST = path.sep.join([DEVKIT_PATH, "test_list.txt"])
+TEST_LIST = path.sep.join([DEVKIT_PATH, "test_list.txt"])
 #VAL_LABELS = path.sep.join([DEVKIT_PATH,
 #	"ILSVRC2015_clsloc_validation_ground_truth.txt"])
 
@@ -34,6 +34,7 @@ VAL_LIST = path.sep.join([DEVKIT_PATH, "test_list.txt"])
 # take a number of images from the training data and use it instead
 NUM_CLASSES = 1000
 NUM_TEST_IMAGES = 10 * NUM_CLASSES
+NUM_VAL_IMAGES = 0.20
 
 # define the path to the output training, validation, and testing
 # lists

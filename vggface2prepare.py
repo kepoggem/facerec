@@ -74,38 +74,28 @@ class VGGFace2Prepare:
 		# labels
 		return (np.array(paths), np.array(labels))
 
-	def buildValidationSet(self):
+	def buildTestSet(self):
 		# initialize the list of image paths and class labels
+		rows = open(self.config.TEST_LIST).read().strip()
+		rows = rows.split("\n")
 		paths = []
 		labels = []
 
-		# load the contents of the file that lists the partial
-		# validation image filenames
-		valFilenames = open(self.config.VAL_LIST).read()
-		valFilenames = valFilenames.strip().split("\n")
-
-		# load the contents of the file that contains the *actual*
-		# ground-truth integer class labels for the validation set
-		valLabels = open(self.config.VAL_LABELS).read()
-		valLabels = valLabels.strip().split("\n")
-
-		# loop over the validation data
-		for (row, label) in zip(valFilenames, valLabels):
-			# break the row into the partial path and image number
-			#(partialPath, imageNum) = row.strip().split(" ")
+		# loop over the rows in the input training file
+		for row in rows:
+			# break the row into the the partial path and image
+			# number (the image number is sequential and is
+			# essentially useless to us)
+			#partialPath = row.strip().split(" ")
 			partialPath = row
 
-			# if the image number is in the blacklist set then we
-			# should ignore this validation image
-			#if imageNum in self.valBlacklist:
-			#	continue
-
-			# construct the full path to the validation image, then
-			# update the respective paths and labels lists
+			# construct the full path to the training image, then
+			# grab the word ID from the path and use it to determine
+			# the integer class label
 			path = os.path.sep.join([self.config.IMAGES_PATH_TEST, partialPath])
+			wordID = partialPath.split("/")[0]
+			label = self.labelMappings[wordID]
+
+			# update the respective paths and label lists
 			paths.append(path)
 			labels.append(label)
-
-		# return a tuple of image paths and associated integer class
-		# labels
-		return (np.array(paths), np.array(labels))
