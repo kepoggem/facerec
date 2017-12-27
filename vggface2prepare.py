@@ -92,19 +92,19 @@ class VGGFace2Prepare:
 		# loop over the validation data
 		for (row, label) in zip(valFilenames, valLabels):
 			# break the row into the partial path and image number
-			(partialPath, imageNum) = row.strip().split(" ")
+			#(partialPath, imageNum) = row.strip().split(" ")
+			partialPath = row
 
 			# if the image number is in the blacklist set then we
 			# should ignore this validation image
-			if imageNum in self.valBlacklist:
-				continue
+			#if imageNum in self.valBlacklist:
+			#	continue
 
 			# construct the full path to the validation image, then
 			# update the respective paths and labels lists
-			path = os.path.sep.join([self.config.IMAGES_PATH, "val",
-			 	"{}.JPEG".format(partialPath)])
+			path = os.path.sep.join([self.config.IMAGES_PATH_TEST, partialPath])
 			paths.append(path)
-			labels.append(int(label) - 1)
+			labels.append(label)
 
 		# return a tuple of image paths and associated integer class
 		# labels

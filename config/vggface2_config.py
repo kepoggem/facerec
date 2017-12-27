@@ -8,6 +8,7 @@ BASE_PATH = "/home/kepoggem/dcnn/datasets/vggface2"
 # based on the base path, derive the images base path, image sets
 # path, and devkit path
 IMAGES_PATH = path.sep.join([BASE_PATH, "train"])
+IMAGES_PATH_TEST = path.sep.join([BASE_PATH, "test"])
 #IMAGE_SETS_PATH = path.sep.join([BASE_PATH, "ImageSets/CLS-LOC/"])
 DEVKIT_PATH = path.sep.join([BASE_PATH, "meta"])
 
