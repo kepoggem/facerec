@@ -33,14 +33,14 @@ class VGGFace2Prepare:
 		# return the label mappings dictionary
 		return labelMappings
 
-	def buildBlackist(self):
+	#def buildBlackist(self):
 		# load the list of blacklisted image IDs and convert them to
 		# a set
-		rows = open(self.config.VAL_BLACKLIST).read()
-		rows = set(rows.strip().split("\n"))
+	#	rows = open(self.config.VAL_BLACKLIST).read()
+	#	rows = set(rows.strip().split("\n"))
 
 		# return the blacklisted image IDs
-		return rows
+	#	return rows
 
 	def buildTrainingSet(self):
 		# load the contents of the training input file that lists
