@@ -1,5 +1,5 @@
 # USAGE
-# python train.py --checkpoints checkpoints/vggface_checkpoints --prefix vggface
+# python train.py --checkpoints ~/dcnn/datasets/vggface2/checkpoints/vggface_checkpoints --prefix vggface
 
 # import the necessary packages
 from config import vggface2_config as config
