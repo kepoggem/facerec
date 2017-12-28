@@ -19,9 +19,9 @@ import cv2
 # initialize the ImageNet helper and use it to construct the set of
 # training and testing data
 print("[INFO] loading image paths...")
-inh = VGGFace2Prepare(config)
-(trainPaths, trainLabels) = inh.buildTrainingSet()
-(testPaths, testLabels) = inh.buildTestingSet()
+vfp = VGGFace2Prepare(config)
+(trainPaths, trainLabels) = vfp.buildTrainingSet()
+(testPaths, testLabels) = vfp.buildTestingSet()
 
 # now that we have the total number of images in the dataset that
 # can be used for training, compute the number of images that

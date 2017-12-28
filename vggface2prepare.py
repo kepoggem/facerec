@@ -99,3 +99,6 @@ class VGGFace2Prepare:
 			# update the respective paths and label lists
 			paths.append(path)
 			labels.append(label)
+		# return a tuple of image paths and associated integer class
+		# labels
+		return (np.array(paths), np.array(labels))
