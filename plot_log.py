@@ -121,4 +121,5 @@ plt.title("{}: cross-entropy loss on {}".format(args["network"],
 plt.xlabel("Epoch #")
 plt.ylabel("Loss")
 plt.legend(loc="upper right")
+plt.savefig('myfig.png')
 plt.show()
