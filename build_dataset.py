@@ -10,7 +10,7 @@
 # import the necessary packages
 from config import vggface2_config as config
 from sklearn.model_selection import train_test_split
-import VGGFace2Prepare
+from vggface2prepare import VGGFace2Prepare
 import numpy as np
 import progressbar
 import json
