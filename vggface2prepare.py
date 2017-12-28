@@ -98,12 +98,14 @@ class VGGFace2Prepare:
 			# the integer class label
 			path = os.path.sep.join([self.config.IMAGES_PATH_TEST, partialPath])
 			wordID = partialPath.split("/")[0]
+			wordID = int(wordID[1:]) 
+			label = self.labelMappings[wordID]
 			#label = self.labelMappings[wordID]
-			label = int(wordID[1:])
 
 			# update the respective paths and label lists
 			paths.append(path)
-			labels.append(label)
+			#labels.append(label)
+			labels.append(wordID)
 		# return a tuple of image paths and associated integer class
 		# labels
 		return (np.array(paths), np.array(labels))
