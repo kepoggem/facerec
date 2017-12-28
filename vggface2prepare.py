@@ -62,7 +62,8 @@ class VGGFace2Prepare:
 			# construct the full path to the training image, then
 			# grab the word ID from the path and use it to determine
 			# the integer class label
-			path = os.path.sep.join([self.config.IMAGES_PATH, partialPath])
+			#path = os.path.sep.join([self.config.IMAGES_PATH, partialPath])
+			path = partialPath
 			wordID = partialPath.split("/")[0]
 			label = self.labelMappings[wordID]
 
