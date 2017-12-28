@@ -28,7 +28,7 @@ class VGGFace2Prepare:
 			# from the label since MATLAB is one-indexed while Python
 			# is zero-indexed
                         #labelMappings[wordID] = int(label) - 1
-            wordID = int(wordID[1:]) 
+        	wordID = int(wordID[1:]) 
 			labelMappings[wordID] = label
 
 		# return the label mappings dictionary
