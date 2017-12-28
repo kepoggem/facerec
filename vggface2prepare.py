@@ -9,7 +9,7 @@ class VGGFace2Prepare:
 
 		# build the label mappings and validation blacklist
 		self.labelMappings = self.buildClassLabels()
-		self.valBlacklist = self.buildBlackist()
+	#	self.valBlacklist = self.buildBlackist()
 
 	def buildClassLabels(self):
 		# load the contents of the file that maps the WordNet IDs
