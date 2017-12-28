@@ -62,7 +62,7 @@ for (dType, paths, labels, outputPath) in datasets:
 	# loop over each of the individual images + labels
 	for (i, (path, label)) in enumerate(zip(paths, labels)):
 		# write the image index, label, and output path to file
-		row = "\t".join([str(i), str(label), path])
+		row = "\t".join([str(i), path, str(label)])
 		f.write("{}\n".format(row))
 
 		# if we are building the training dataset, then compute the
