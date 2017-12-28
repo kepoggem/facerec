@@ -51,7 +51,7 @@ VAL_MX_REC = path.sep.join([MX_OUTPUT, "rec/val.rec"])
 TEST_MX_REC = path.sep.join([MX_OUTPUT, "rec/test.rec"])
 
 # define the path to the dataset mean
-DATASET_MEAN = "output/vggface2_mean.json"
+DATASET_MEAN = "/home/kepoggem/dcnn/datasets/vggface2/output/vggface2_mean.json"
 
 # define the batch size and number of devices used for training
 BATCH_SIZE = 32
