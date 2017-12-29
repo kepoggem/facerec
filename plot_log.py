@@ -108,6 +108,7 @@ plt.title("{}: rank-1 and rank-5 accuracy on {}".format(
 plt.xlabel("Epoch #")
 plt.ylabel("Accuracy")
 plt.legend(loc="lower right")
+plt.savefig('acc.png')
 
 # plot the losses
 plt.style.use("ggplot")
@@ -125,5 +126,5 @@ plt.title("{}: cross-entropy loss & accuracy on {}".format(args["network"],
 plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
 plt.legend(loc="upper right")
-plt.savefig('myfig.png')
-plt.show()
+plt.savefig('loss_acc.png')
+#plt.show()
