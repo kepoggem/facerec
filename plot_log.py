@@ -116,10 +116,14 @@ plt.plot(np.arange(0, len(trainLoss)), trainLoss,
 	label="train_loss")
 plt.plot(np.arange(0, len(valLoss)), valLoss,
 	label="val_loss")
+plt.plot(np.arange(0, len(trainRank1)), trainRank1,
+	label="train_rank1")
+plt.plot(np.arange(0, len(valRank1)), valRank1,
+	label="val_rank1")
 plt.title("{}: cross-entropy loss on {}".format(args["network"],
 	args["dataset"]))
 plt.xlabel("Epoch #")
-plt.ylabel("Loss")
+plt.ylabel("Loss/Accuracy")
 plt.legend(loc="upper right")
 plt.savefig('myfig.png')
 plt.show()
