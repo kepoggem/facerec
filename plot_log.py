@@ -19,7 +19,8 @@ args = vars(ap.parse_args())
 
 # define the paths to the training logs
 logs = [
-	(65, "training_0.log")
+	(10, "training_0.log"),
+      	(20, "training_10.log")
 ]
 
 # initialize the list of train rank-1 and rank-5 accuracies, along
