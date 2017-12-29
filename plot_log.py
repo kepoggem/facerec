@@ -120,7 +120,7 @@ plt.plot(np.arange(0, len(trainRank1)), trainRank1,
 	label="train_rank1")
 plt.plot(np.arange(0, len(valRank1)), valRank1,
 	label="val_rank1")
-plt.title("{}: cross-entropy loss on {}".format(args["network"],
+plt.title("{}: cross-entropy loss & accuracy on {}".format(args["network"],
 	args["dataset"]))
 plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
