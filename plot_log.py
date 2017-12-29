@@ -96,14 +96,14 @@ for (i, (endEpoch, p)) in enumerate(logs):
 # plot the accuracies
 plt.style.use("ggplot")
 plt.figure()
-plt.plot(np.arange(0, len(trainRank1)), trainRank1,
-	label="train_rank1")
 #plt.plot(np.arange(0, len(trainRank5)), trainRank5,
 #	label="train_rank5")
 plt.plot(np.arange(0, len(valRank1)), valRank1,
 	label="val_rank1")
 #plt.plot(np.arange(0, len(valRank5)), valRank5,
 #	label="val_rank5")
+plt.plot(np.arange(0, len(trainRank1)), trainRank1,
+	label="train_rank1")
 plt.title("{}: rank-1 and rank-5 accuracy on {}".format(
 	args["network"], args["dataset"]))
 plt.xlabel("Epoch #")
