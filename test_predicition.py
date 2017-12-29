@@ -130,6 +130,13 @@ for row in rows:
 		# compute the average for each class label based on the
 		# predictions for the patches
 		facePreds = facePreds.mean(axis=0)
+		
+		# show the true class label
+		print("[INFO] actual={}".format(target))
+		
+		for pred in facePreds:	
+			# show the predicted class label
+			print("[INFO] predicted={}".format(pred))
 
 		# visualize the face predictions
 		#faceCanvas = FaceHelper.visualizeFace(facePreds,
