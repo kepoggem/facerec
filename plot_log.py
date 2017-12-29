@@ -21,7 +21,8 @@ args = vars(ap.parse_args())
 logs = [
 	(10, "training_0.log"),
       	(14, "training_10.log"),
-	(20, "training_14.log")
+	(20, "training_14.log"),
+	(25, "training_16.log")
 ]
 
 # initialize the list of train rank-1 and rank-5 accuracies, along
