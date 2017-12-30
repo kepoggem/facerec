@@ -58,5 +58,5 @@ DATASET_MEAN = "/home/kepoggem/dcnn/datasets/vggface2/output/vggface2_mean.json"
 DLIB_LANDMARK_PATH = "/home/kepoggem/dcnn/facerec/neuralnetwork/preprocessing/shape_predictor_68_face_landmarks.dat"
 
 # define the batch size and number of devices used for training
-BATCH_SIZE = 32
-NUM_DEVICES = 1
+BATCH_SIZE = 64
+NUM_DEVICES = 2
