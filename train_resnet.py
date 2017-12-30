@@ -3,7 +3,7 @@
 
 # import the necessary packages
 from config import vggface2_config as config
-from neuralnetwork.nn.mxconv import MxVGGNet
+from neuralnetwork.nn.mxconv import MxResNet
 from vggface2prepare import VGGFace2Prepare
 from neuralnetwork.mxcallbacks import one_off_callback
 import mxnet as mx
