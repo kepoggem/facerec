@@ -82,7 +82,7 @@ else:
 
 # compile the model
 model = mx.model.FeedForward(
-	ctx=[mx.gpu(0)],
+	ctx=[mx.gpu(0), mx.gpu(1)],
 	symbol=model,
 	initializer=mx.initializer.MSRAPrelu(),
 	arg_params=argParams,
