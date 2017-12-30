@@ -23,7 +23,8 @@ logs = [
       	(6, "training_3.log"),
 	(13, "training_6.log"),
 	(14, "training_13.log"),
-	(20, "training_14.log")
+	(15, "training_14.log"),
+	(25, "training_15.log")
 ]
 
 # initialize the list of train rank-1 and rank-5 accuracies, along
