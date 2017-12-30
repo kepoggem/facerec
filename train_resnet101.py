@@ -25,7 +25,7 @@ args = vars(ap.parse_args())
 
 # set the logging level and output file
 logging.basicConfig(level=logging.DEBUG,
-	filename="training_resnet_{}.log".format(args["start_epoch"]),
+	filename="training_resnet101_{}.log".format(args["start_epoch"]),
 	filemode="w")
 
 # determine the batch and load the mean pixel values
@@ -55,7 +55,7 @@ valIter = mx.io.ImageRecordIter(
 	mean_b=means["B"])
 
 # initialize the optimizer
-opt = mx.optimizer.SGD(learning_rate=1e-4, momentum=0.9, wd=0.0001,
+opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
 	rescale_grad=1.0 / batchSize)
 
 # construct the checkpoints path, initialize the model argument and
