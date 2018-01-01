@@ -133,7 +133,7 @@ for row in rows:
 		#facePreds = facePreds.mean(axis=0)
 		
 		#facePreds5 = np.argsort(facePreds)[::-1][:5]
-		facePreds5 = np.argsort(facePreds)
+		facePreds5 = np.argsort(facePreds, axis=1)
 		
 		# show the true class label
 		print("[INFO] actual={}".format(target))
