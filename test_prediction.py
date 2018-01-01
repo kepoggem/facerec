@@ -1,5 +1,5 @@
 # USAGE
-# python vis_classification.py --checkpoints checkpoints --prefix vggnet --epoch 55
+# python test_prediction.py --checkpoints checkpoints --prefix resnet101 --epoch 19
 
 # import OpenCV before mxnet to avoid a segmentation fault
 import cv2
