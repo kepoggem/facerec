@@ -36,6 +36,7 @@ ap.add_argument("-s", "--sample-size", type=int, default=10,
 args = vars(ap.parse_args())
 
 count = 0
+element = 0
 
 # load the label encoders and mean files
 #print("[INFO] loading label encoders and mean files...")
@@ -100,6 +101,7 @@ for row in rows:
 
 	# detect faces in the grayscale image
 	rects = detector(gray, 1)
+	element = element + 1
 
 	# loop over the face detections
 	for rect in rects:
@@ -152,6 +154,7 @@ for row in rows:
 				count = count + 1
 		
 		print("[INFO] countervalue={}".format(count))
+		print("[INFO] elementvalue={}".format(element))
 		
 		#print("[INFO] facePredsvalue={}".format(facePreds5))
 		
