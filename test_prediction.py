@@ -143,10 +143,13 @@ for row in rows:
 		
 		
 		for pred  in enumerate(facePreds5):
-			print("[INFO] predvalue={}".format(pred))
+			print("[INFO] predvalue={}".format(pred[1]))
 			id = pred[1]
 			print("[INFO] probvalue={}".format(facePreds[id]))
+			if pred[1] == target:
+				count = count + 1
 		
+		print("[INFO] countervalue={}".format(count))
 		#print("[INFO] facePredsvalue={}".format(facePreds5))
 		
 		#for (i, pred) in enumerate(facePreds5):	
