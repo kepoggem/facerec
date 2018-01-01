@@ -132,12 +132,13 @@ for row in rows:
 		# predictions for the patches
 		#facePreds = facePreds.mean(axis=0)
 		
-		facePreds5 = np.argsort(facePreds)
+		facePreds5 = np.argsort(facePreds)[::-1][:5]
 		
 		# show the true class label
 		print("[INFO] actual={}".format(target))
 		
-		print("[INFO] facePredsvalue={}".format(facePreds5))
+		for pred in enumerate(facePreds):
+			print("[INFO] facePredsvalue={}".format(pred))
 		
 		#print("[INFO] facePredsvalue={}".format(facePreds5))
 		
