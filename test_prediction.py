@@ -98,6 +98,7 @@ for row in rows:
 
 	# detect faces in the grayscale image
 	rects = detector(gray, 1)
+	count = 0
 
 	# loop over the face detections
 	for rect in rects:
@@ -150,6 +151,7 @@ for row in rows:
 				count = count + 1
 		
 		print("[INFO] countervalue={}".format(count))
+		
 		#print("[INFO] facePredsvalue={}".format(facePreds5))
 		
 		#for (i, pred) in enumerate(facePreds5):	
