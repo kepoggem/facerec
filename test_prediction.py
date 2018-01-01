@@ -139,6 +139,7 @@ for row in rows:
 		for (i, pred) in enumerate(facePreds5):	
 			# show the predicted class label
 			print("[INFO] predicted={}".format(pred))
+			print("[INFO] ivalue={}".format(i))
 			
 			
 
