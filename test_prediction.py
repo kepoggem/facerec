@@ -140,7 +140,7 @@ for row in rows:
 			# show the predicted class label
 			print("[INFO] predicted={}".format(pred))
 			print("[INFO] ivalue={}".format(i))
-			for pre in pred
+			for pre in pred:
 				print("[INFO] prevalue={}".format(pre))
 			
 			
