@@ -35,6 +35,8 @@ ap.add_argument("-s", "--sample-size", type=int, default=10,
 	help="sample # of images to load")
 args = vars(ap.parse_args())
 
+count = 0
+
 # load the label encoders and mean files
 #print("[INFO] loading label encoders and mean files...")
 #faceLE = pickle.loads(open(config.FACE_LABEL_ENCODER, "rb").read())
@@ -98,7 +100,6 @@ for row in rows:
 
 	# detect faces in the grayscale image
 	rects = detector(gray, 1)
-	count = 0
 
 	# loop over the face detections
 	for rect in rects:
