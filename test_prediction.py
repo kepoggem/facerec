@@ -136,12 +136,12 @@ for row in rows:
 		
 		# show the true class label
 		print("[INFO] actual={}".format(target))
-		print("[INFO] facePreds5value={}".format(facePreds5))
-		print("[INFO] facePredsvalue={}".format(facePreds))
+		#print("[INFO] facePreds5value={}".format(facePreds5))
+		#print("[INFO] facePredsvalue={}".format(facePreds))
 		
 		
-		#for (label, pred)  in enumerate(facePreds5):
-		#	print("[INFO] facePredsvalue={}".format(label))
+		for pred  in enumerate(facePreds):
+			print("[INFO] facePredsvalue={}".format(pred))
 		#	print("[INFO] facePredsvalue={}".format(pred))
 		
 		#print("[INFO] facePredsvalue={}".format(facePreds5))
