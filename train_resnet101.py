@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.DEBUG,
 
 # determine the batch and load the mean pixel values
 #batchSize = config.BATCH_SIZE * config.NUM_DEVICES
-batchSize = 64
+batchSize = 96
 means = json.loads(open(config.DATASET_MEAN).read())
 
 # construct the training image iterator
@@ -56,7 +56,7 @@ valIter = mx.io.ImageRecordIter(
 	mean_b=means["B"])
 
 # initialize the optimizer
-opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
+opt = mx.optimizer.SGD(learning_rate=1e-4, momentum=0.9, wd=0.0001,
 	rescale_grad=1.0 / batchSize)
 
 # construct the checkpoints path, initialize the model argument and
