@@ -134,7 +134,7 @@ for row in rows:
 		
 		#facePreds5 = np.argsort(facePreds)[::-1][:5]
 		#facePreds5 = np.argsort(facePreds)
-		facePreds5 = np.sort(facePreds)
+		facePreds5 = np.sort(facePreds)[::-1][:5]
 		
 		# show the true class label
 		print("[INFO] actual={}".format(target))
