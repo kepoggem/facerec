@@ -131,17 +131,20 @@ for row in rows:
 		# compute the average for each class label based on the
 		# predictions for the patches
 		#facePreds = facePreds.mean(axis=0)
+		
 		facePreds5 = np.argsort(facePreds)[::-1][:5]
 		
 		# show the true class label
 		print("[INFO] actual={}".format(target))
 		
-		print("[INFO] facePredsvalue={}".format(facePreds5))
+		print("[INFO] facePredsvalue={}".format(facePreds))
+		
+		#print("[INFO] facePredsvalue={}".format(facePreds5))
 		
 		for (i, pred) in enumerate(facePreds5):	
 			# show the predicted class label
-			print("[INFO] predicted={}".format(pred))
-			print("[INFO] ivalue={}".format(i))
+			#print("[INFO] predicted={}".format(pred))
+			#print("[INFO] ivalue={}".format(i))
 			
 			
 
