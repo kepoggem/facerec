@@ -136,11 +136,12 @@ for row in rows:
 		# show the true class label
 		print("[INFO] actual={}".format(target))
 		
-		for (i, pred, j) in enumerate(facePreds5):	
+		for (i, pred) in enumerate(facePreds5):	
 			# show the predicted class label
 			print("[INFO] predicted={}".format(pred))
 			print("[INFO] ivalue={}".format(i))
-			print("[INFO] jvalue={}".format(j))
+			for pre in pred
+				print("[INFO] prevalue={}".format(pre))
 			
 			
 
