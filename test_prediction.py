@@ -125,7 +125,7 @@ for row in rows:
 
 		# make predictions on faces based on the extracted
 		# patches
-		facePreds = model.predict(facePatches)
+		facePreds = model.predict(facePatches)[0]
 
 		# compute the average for each class label based on the
 		# predictions for the patches
