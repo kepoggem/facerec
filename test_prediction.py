@@ -45,8 +45,8 @@ faceMeans = json.loads(open(config.DATASET_MEAN).read())
 
 # load the label encoder, followed by the testing dataset file,
 # then sample the testing set
-rows = open(config.TEST_MX_LIST).read().strip().split("\n")
-#rows = open(config.TRAIN_MX_LIST).read().strip().split("\n")
+#rows = open(config.TEST_MX_LIST).read().strip().split("\n")
+rows = open(config.TRAIN_MX_LIST).read().strip().split("\n")
 rows = np.random.choice(rows, size=args["sample_size"])
 
 # load our pre-trained model
