@@ -144,7 +144,7 @@ for row in rows:
 		
 		for pred  in enumerate(facePreds5):
 			print("[INFO] predvalue={}".format(pred))
-		#	print("[INFO] probvalue={}".format())
+			print("[INFO] probvalue={}".format(facePreds[pred]))
 		
 		#print("[INFO] facePredsvalue={}".format(facePreds5))
 		
