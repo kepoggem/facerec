@@ -1,5 +1,5 @@
 # USAGE
-# python test_prediction.py --checkpoints checkpoints --prefix resnet101 --epoch 19
+# python test_prediction.py --checkpoints ~/dcnn/datasets/vggface2/checkpoints/resnet101_checkpoints/ --prefix resnet101 --epoch 19 -s 10
 
 # import OpenCV before mxnet to avoid a segmentation fault
 import cv2
@@ -42,7 +42,8 @@ faceMeans = json.loads(open(config.DATASET_MEAN).read())
 
 # load the label encoder, followed by the testing dataset file,
 # then sample the testing set
-rows = open(config.TEST_MX_LIST).read().strip().split("\n")
+#rows = open(config.TEST_MX_LIST).read().strip().split("\n")
+rows = open(config.TRAIN_MX_LIST).read().strip().split("\n")
 rows = np.random.choice(rows, size=args["sample_size"])
 
 # load our pre-trained model
@@ -135,9 +136,11 @@ for row in rows:
 		# show the true class label
 		print("[INFO] actual={}".format(target))
 		
-		for pred in facePreds5:	
+		for (i, pred) in enumerate(facePreds5):	
 			# show the predicted class label
 			print("[INFO] predicted={}".format(pred))
+			
+			
 
 		# visualize the face predictions
 		#faceCanvas = FaceHelper.visualizeFace(facePreds,
