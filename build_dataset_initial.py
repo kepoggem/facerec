@@ -9,10 +9,12 @@
 
 # import the necessary packages
 from config import vggface2_config as config
+from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from initvggface2prepare import VGGFace2Prepare
 import numpy as np
 import progressbar
+import pickle
 import json
 import cv2
 
@@ -41,6 +43,13 @@ split = train_test_split(trainPaths, trainLabels,
 	test_size=numVal, stratify=trainLabels,
 	random_state=42)
 (trainPaths, valPaths, trainLabels, valLabels) = split
+
+# perform stratified sampling from the training set to construct a
+# a testing set
+print("[INFO] constructing testing data...")
+split = train_test_split(trainPaths, trainLabels, test_size=numTest,
+	stratify=trainLabels)
+(trainPaths, testPaths, trainLabels, testLabels) = split
 
 # construct a list pairing the training, validation, and testing
 # image paths along with their corresponding labels and output list
@@ -94,4 +103,10 @@ print("[INFO] serializing means...")
 D = {"R": np.mean(R), "G": np.mean(G), "B": np.mean(B)}
 f = open(config.DATASET_MEAN, "w")
 f.write(json.dumps(D))
+f.close()
+
+# write the label encoder to file
+print("[INFO] serializing label encoder...")
+f = open(config.LABEL_ENCODER_PATH, "wb")
+f.write(pickle.dumps(le))
 f.close()
