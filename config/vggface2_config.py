@@ -33,10 +33,12 @@ TEST_LIST = path.sep.join([DEVKIT_PATH, "test_list.txt"])
 # since we do not have access to the testing data we need to
 # take a number of images from the training data and use it instead
 #NUM_CLASSES = 1000
-NUM_CLASSES = 1057
-#NUM_TEST_IMAGES = 10 * NUM_CLASSES
-NUM_TEST_IMAGES = 15307
+#NUM_CLASSES = 1057
+NUM_CLASSES = 1168
 NUM_VAL_IMAGES = 0.20
+NUM_TEST_IMAGES = 0.05
+#NUM_TEST_IMAGES = 10 * NUM_CLASSES
+#NUM_TEST_IMAGES = 15307
 
 # define the path to the output training, validation, and testing
 # lists
@@ -56,6 +58,8 @@ DATASET_MEAN = "/home/kepoggem/dcnn/datasets/vggface2/output/vggface2_mean.json"
 
 # define the path to the dlib facial landmark predictor
 DLIB_LANDMARK_PATH = "/home/kepoggem/dcnn/facerec/neuralnetwork/preprocessing/shape_predictor_68_face_landmarks.dat"
+
+LABEL_ENCODER_PATH = "/home/kepoggem/dcnn/datasets/vggface2/output/vggface2_le.cpickle"
 
 # define the batch size and number of devices used for training
 BATCH_SIZE = 64
