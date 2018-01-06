@@ -27,8 +27,8 @@ vfp = VGGFace2Prepare(config)
 # now that we have the total number of images in the dataset that
 # can be used for training, compute the number of images that
 # should be used for validation
-numVal = int(len(trainPaths) * config.NUM_VAL_IMAGES)
-numTest = int(len(trainPaths) * config.NUM_TEST_IMAGES)
+numVal = int((len(trainPaths) * config.NUM_TRAIN_IMAGES) * config.NUM_VAL_IMAGES)
+numTest = int((len(trainPaths) * config.NUM_TRAIN_IMAGES) * config.NUM_TEST_IMAGES)
 
 # our class labels are represented as strings so we need to encode
 # them
