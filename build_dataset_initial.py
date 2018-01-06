@@ -32,9 +32,9 @@ numTest = int(len(trainPaths) * config.NUM_TEST_IMAGES)
 
 # our class labels are represented as strings so we need to encode
 # them
-print("[INFO] encoding labels...")
+#print("[INFO] encoding labels...")
 le = LabelEncoder().fit(trainLabels)
-trainLabels = le.transform(trainLabels)
+#trainLabels = le.transform(trainLabels)
 
 # perform stratified sampling from the training set to construct a
 # a testing set

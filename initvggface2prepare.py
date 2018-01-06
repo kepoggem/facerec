@@ -65,7 +65,7 @@ class VGGFace2Prepare:
 			# update the respective paths and label lists
 			paths.append(path)
 			#labels.append(label)
-			labels.append(wordID)
+			labels.append(label)
 
 
 		# return a tuple of image paths and associated integer class
