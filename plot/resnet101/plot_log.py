@@ -20,7 +20,9 @@ args = vars(ap.parse_args())
 # define the paths to the training logs
 logs = [
 	(15, "training_resnet101_0.log"),
-        (25, "training_resnet101_15.log")
+        (17, "training_resnet101_15.log"),
+	(20, "training_resnet101_17.log"),
+	(25, "training_resnet101_20.log")
 ]
 
 # initialize the list of train rank-1 and rank-5 accuracies, along
