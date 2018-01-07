@@ -83,15 +83,17 @@ for row in rows:
 	# format and display the top predicted class label
 	#label = le.inverse_transform(idxs[0])
 	#label = label.replace(":", " ")
-	label = "{}: {:.2f}%".format(facePreds5[1], preds[facePreds5[0]] * 100)
-	cv2.putText(orig, label, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-		0.6, (0, 255, 0), 2)
-
+	label = "{}: {:.2f}%".format(facePreds5[0], preds[facePreds5[0]] * 100)
+	cv2.putText(orig, label, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+	
+        label = "{}: {:.2f}%".format(facePreds5[1], preds[facePreds5[1]] * 100)
+        cv2.putText(orig, label, (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+	
 	# loop over the predictions and display them
 	for pred in enumerate(facePreds5):
-		prob = pred[0]
+		prob = pred[1]
 		print("\t[INFO] predicted={}, probability={:.2f}%".format(
-			pred[0], preds[prob] * 100))
+			pred[1], preds[prob] * 100))
 
 	# show the image
 	cv2.imshow("Image", orig)
