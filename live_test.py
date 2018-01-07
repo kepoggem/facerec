@@ -73,22 +73,23 @@ for row in rows:
 
 	# classify the image and grab the indexes of the top-5 predictions
 	preds = model.predict(image)[0]
-	idxs = np.argsort(preds)[::-1][:5]
+	facePreds5 = np.argsort(preds)[::-1][:5]
 
 	# show the true class label
-	print("[INFO] actual={}".format(le.inverse_transform(target)))
+	print("[INFO] actual={}".format(target))
 
 	# format and display the top predicted class label
-	label = le.inverse_transform(idxs[0])
-	label = label.replace(":", " ")
-	label = "{}: {:.2f}%".format(label, preds[idxs[0]] * 100)
+	#label = le.inverse_transform(idxs[0])
+	#label = label.replace(":", " ")
+	label = "{}: {:.2f}%".format(facePreds5[1], preds[facePreds5[0]] * 100)
 	cv2.putText(orig, label, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
 		0.6, (0, 255, 0), 2)
 
 	# loop over the predictions and display them
-	for (i, prob) in zip(idxs, preds):
+	for pred in enumerate(facePreds5):
+		prob = pred[1]
 		print("\t[INFO] predicted={}, probability={:.2f}%".format(
-			le.inverse_transform(i), preds[i] * 100))
+			, facePreds5[prob] * 100))
 
 	# show the image
 	cv2.imshow("Image", orig)
