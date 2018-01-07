@@ -90,7 +90,7 @@ for row in rows:
 	for pred in enumerate(facePreds5):
 		prob = pred[1]
 		print("\t[INFO] predicted={}, probability={:.2f}%".format(
-			, facePreds5[prob] * 100))
+			pred[1], facePreds5[prob] * 100))
 
 	# show the image
 	cv2.imshow("Image", orig)
