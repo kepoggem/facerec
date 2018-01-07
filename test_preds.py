@@ -1,9 +1,9 @@
 # USAGE
-# python test_preds.py --checkpoints checkpoints --prefix resnet50 --epoch 20
+# python test_preds.py --checkpoints ~/dcnn/datasets/vggface2/checkpoints/ --prefix resnet50 --epoch 20
 
 # import the necessary packages
-from config import car_config as config
-from pyimagesearch.utils.ranked import rank5_accuracy
+from config import vggface2_config as config
+from neuralnetwork.utils.ranked import rank5_accuracy
 import mxnet as mx
 import argparse
 import pickle
