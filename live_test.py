@@ -89,9 +89,9 @@ for row in rows:
 
 	# loop over the predictions and display them
 	for pred in enumerate(facePreds5):
-		prob = pred[1]
+		prob = pred[0]
 		print("\t[INFO] predicted={}, probability={:.2f}%".format(
-			pred[1], preds[prob] * 100))
+			pred[0], preds[prob] * 100))
 
 	# show the image
 	cv2.imshow("Image", orig)
