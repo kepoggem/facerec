@@ -6,7 +6,7 @@
 import cv2
 
 # import the necessary packages
-from config import car_config as config
+from config import vggface2_config as config
 from neuralnetwork.preprocessing import ImageToArrayPreprocessor
 from neuralnetwork.preprocessing import AspectAwarePreprocessor
 from neuralnetwork.preprocessing import MeanPreprocessor
@@ -48,10 +48,13 @@ model = mx.model.FeedForward(
 	symbol=model.symbol,
 	arg_params=model.arg_params,
 	aux_params=model.aux_params)
+	
+#load R,G,B means
+faceMeans = json.loads(open(config.DATASET_MEAN).read())
 
 # initialize the image pre-processors
 sp = AspectAwarePreprocessor(width=227, height=227)
-mp = MeanPreprocessor(config.R_MEAN, config.G_MEAN, config.B_MEAN)
+mp = MeanPreprocessor(faceMeans["R"], faceMeans["G"], faceMeans["B"])
 iap = ImageToArrayPreprocessor(dataFormat="channels_first")
 
 # loop over the testing images
