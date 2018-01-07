@@ -96,19 +96,20 @@ for row in rows:
 	# grayscale
 	print("[INFO] processing {}".format(imagePath))
 	image = cv2.imread(imagePath)
-	image = imutils.resize(image, width=256)
-	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	#image = imutils.resize(image, width=256)
+	face = imutils.resize(image, width=256)
+	#gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 	# detect faces in the grayscale image
-	rects = detector(gray, 1)
+	#rects = detector(gray, 1)
 	element = element + 1
 
 	# loop over the face detections
-	for rect in rects:
+	#for rect in rects:
 		# determine the facial landmarks for the face region, then
 		# align the face
-		shape = predictor(gray, rect)
-		face = fa.align(image, gray, rect)
+	#	shape = predictor(gray, rect)
+	#	face = fa.align(image, gray, rect)
 
 		# resize the face to a fixed size, then extract 10-crop
 		# patches from it
