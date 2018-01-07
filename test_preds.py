@@ -8,6 +8,7 @@ import mxnet as mx
 import argparse
 import pickle
 import os
+import json
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
