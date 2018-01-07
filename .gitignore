@@ -1,7 +1,7 @@
 *.out
 fig
 log
-plot
+plot/
 *.png
 *.log
 *.pyc
