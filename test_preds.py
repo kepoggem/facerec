@@ -22,14 +22,17 @@ args = vars(ap.parse_args())
 # load the label encoder
 #le = pickle.loads(open(config.LABEL_ENCODER_PATH, "rb").read())
 
+#load R,G,B means
+faceMeans = json.loads(open(config.DATASET_MEAN).read())
+
 # construct the validation image iterator
 testIter = mx.io.ImageRecordIter(
 	path_imgrec=config.TEST_MX_REC,
 	data_shape=(3, 224, 224),
 	batch_size=config.BATCH_SIZE,
-	mean_r=config.R_MEAN,
-	mean_g=config.G_MEAN,
-	mean_b=config.B_MEAN)
+	mean_r=faceMeans["R"],
+	mean_g=faceMeans["G"],
+	mean_b=faceMeans["B"])
 
 # load our pre-trained model
 print("[INFO] loading pre-trained model...")
