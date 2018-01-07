@@ -58,7 +58,7 @@ model = mx.model.FeedForward.load(checkpointsPath,
 
 # compile the model
 model = mx.model.FeedForward(
-	ctx=[mx.gpu(0)],
+	ctx=[mx.cpu(4)],
 	symbol=model.symbol,
 	arg_params=model.arg_params,
 	aux_params=model.aux_params)
