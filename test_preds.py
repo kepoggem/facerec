@@ -29,7 +29,7 @@ faceMeans = json.loads(open(config.DATASET_MEAN).read())
 # construct the validation image iterator
 testIter = mx.io.ImageRecordIter(
 	path_imgrec=config.TEST_MX_REC,
-	data_shape=(3, 224, 224),
+	data_shape=(3, 227, 227),
 	batch_size=32,
 	mean_r=faceMeans["R"],
 	mean_g=faceMeans["G"],
