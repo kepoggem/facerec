@@ -98,6 +98,8 @@ model = mx.model.FeedForward(
 batchEndCBs = [mx.callback.Speedometer(batchSize, 10)]
 epochEndCBs = [mx.callback.do_checkpoint(checkpointsPath)]
 metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
+# logging.info("top-1 and top-5 acc is {}".format(model.score(X = val,
+#               eval_metric = ['acc', mx.metric.create('top_k_accuracy', top_k = 5)])))
 
 # train the network
 print("[INFO] training network...")
