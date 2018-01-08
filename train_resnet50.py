@@ -25,7 +25,7 @@ args = vars(ap.parse_args())
 
 # set the logging level and output file
 logging.basicConfig(level=logging.DEBUG,
-	filename="training_resnet_{}.log".format(args["start_epoch"]),
+	filename="training_resnet50_{}.log".format(args["start_epoch"]),
 	filemode="w")
 
 # determine the batch and load the mean pixel values

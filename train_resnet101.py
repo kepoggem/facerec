@@ -56,8 +56,10 @@ valIter = mx.io.ImageRecordIter(
 	mean_b=means["B"])
 
 # initialize the optimizer
-opt = mx.optimizer.SGD(learning_rate=1e-4, momentum=0.9, wd=0.0001,
-	rescale_grad=1.0 / batchSize)
+#opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
+#	rescale_grad=1.0 / batchSize)
+opt = mx.optimizer.Adam(learning_rate=1e-2, wd=0.0001,
+       rescale_grad=1.0 / batchSize)
 
 # construct the checkpoints path, initialize the model argument and
 # auxiliary parameters
