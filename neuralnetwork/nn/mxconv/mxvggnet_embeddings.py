@@ -1,7 +1,7 @@
 # import the necessary packages
 import mxnet as mx
 
-class MxVGGNet:
+class MxVGGNetEmbeddings:
 	@staticmethod
 	def build(classes):
 		# data input
