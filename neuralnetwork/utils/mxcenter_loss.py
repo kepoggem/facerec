@@ -2,7 +2,7 @@ import os
 from neuralnetwork.utils.mxcenter_loss import *
 
 # MXNET_CPU_WORKER_NTHREADS must be greater than 1 for custom op to work on CPU
-os.environ['MXNET_CPU_WORKER_NTHREADS'] = '2'
+#os.environ['MXNET_CPU_WORKER_NTHREADS'] = '2'
 import mxnet as mx
 
 
