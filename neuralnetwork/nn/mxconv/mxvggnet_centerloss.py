@@ -1,19 +1,15 @@
 # import the necessary packages
 import mxnet as mx
+from neuralnetwork.utils.mxcenter_loss import *
 
-class MxVGGNetEmbeddings:
+class MxVGGNet:
 	@staticmethod
 	def build(classes):
-		
-		anchor = mx.symbol.Variable("anchor")
-   		positive = mx.symbol.Variable("positive")
-   		negative = mx.symbol.Variable("negative")
-    	concat = mx.symbol.Concat(
-        *[anchor, positive, negative], dim=0, name="concat")
-		
 		# data input
-		data = mx.sym.Variable(name="data")
-		data = concat
+		data = mx.sym.Variable("data")
+		
+		softmax_label = mx.symbol.Variable('softmax_label')
+    	center_label = mx.symbol.Variable('center_label')
 
 		# Block #1: (CONV => RELU) * 2 => POOL
 		conv1_1 = mx.sym.Convolution(data=data, kernel=(3, 3),
@@ -123,33 +119,15 @@ class MxVGGNetEmbeddings:
 		do7 = mx.sym.Dropout(data=bn7_1, p=0.5)
 
 		# softmax classifier
-		embeddings = mx.sym.FullyConnected(data=do7, num_hidden=512,
+		embedding = mx.sym.FullyConnected(data=do7, num_hidden=classes,
 			name="fc3")
-		#model = mx.symbol.L2Normalization(embeddings)
-		#model = mx.sym.SoftmaxOutput(data=fc3, name="softmax")
+		softmax_loss = mx.sym.SoftmaxOutput(data=fc3, label=softmax_label, name="softmax")
 		
-		l2 = mx.symbol.L2Normalization(embeddings)
-  		fa = mx.symbol.slice_axis(l2, axis=0, begin=0, end=len_size)
-  		fp = mx.symbol.slice_axis(l2, axis=0, begin=len_size, end=2 * len_size)
-  		fn = mx.symbol.slice_axis(l2, axis=0, begin=2 * len_size, end=3 * len_size)
-  		
-  		same = mx.sym.Variable('same')
-  		diff = mx.sym.Variable('diff')
-  		anchor = mx.sym.Variable('anchor')
-  		one = mx.sym.Variable('one')
-  		one = mx.sym.Reshape(data = one, shape = (-1, 1))
-  		
-  		fp = fa - fp
-  		fn = fa - fn
-  		fp = fp * fp
-  		fn = fn * fn
-  		fp = mx.sym.sum(fp, axis = 1, keepdims = 1)
-  		fn = mx.sym.sum(fn, axis = 1, keepdims = 1)
-  		loss = fn - fp
-  		loss = one - loss
-  		loss = mx.sym.Activation(data = loss, act_type = 'relu')
-  		return mx.sym.MakeLoss(loss)
-
+		center_loss_ = mx.symbol.Custom(data=embedding, label=center_label, name='center_loss_', op_type='centerloss',\
+        num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
+    	center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
+    	
+   		mlp = mx.symbol.Group([softmax_loss, center_loss])
 
 		# return the network architecture
-		#return model
+		return mlp
