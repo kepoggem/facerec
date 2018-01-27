@@ -5,7 +5,7 @@ class MxVGGNetEmbeddings:
 	@staticmethod
 	def build(classes):
 		# data input
-		data = mx.sym.Variable("data")
+		data = mx.sym.Variable(name="data")
 
 		# Block #1: (CONV => RELU) * 2 => POOL
 		conv1_1 = mx.sym.Convolution(data=data, kernel=(3, 3),
@@ -117,8 +117,31 @@ class MxVGGNetEmbeddings:
 		# softmax classifier
 		embeddings = mx.sym.FullyConnected(data=do7, num_hidden=512,
 			name="fc3")
-		model = mx.symbol.L2Normalization(embeddings)
+		#model = mx.symbol.L2Normalization(embeddings)
 		#model = mx.sym.SoftmaxOutput(data=fc3, name="softmax")
+		
+		l2 = mx.symbol.L2Normalization(embeddings)
+  		fa = mx.symbol.slice_axis(l2, axis=0, begin=0, end=len_size)
+  		fp = mx.symbol.slice_axis(l2, axis=0, begin=len_size, end=2 * len_size)
+  		fn = mx.symbol.slice_axis(l2, axis=0, begin=2 * len_size, end=3 * len_size)
+  		
+  		same = mx.sym.Variable('same')
+  		diff = mx.sym.Variable('diff')
+  		anchor = mx.sym.Variable('anchor')
+  		one = mx.sym.Variable('one')
+  		one = mx.sym.Reshape(data = one, shape = (-1, 1))
+  		
+  		fp = fa - fp
+  		fn = fa - fn
+  		fp = fp * fp
+  		fn = fn * fn
+  		fp = mx.sym.sum(fp, axis = 1, keepdims = 1)
+  		fn = mx.sym.sum(fn, axis = 1, keepdims = 1)
+  		loss = fn - fp
+  		loss = one - loss
+  		loss = mx.sym.Activation(data = loss, act_type = 'relu')
+  		return mx.sym.MakeLoss(loss)
+
 
 		# return the network architecture
-		return model
+		#return model
