@@ -127,7 +127,7 @@ class MxVGGNetCl:
         num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
 		center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
 		
-			mlp = mx.symbol.Group([softmax_loss, center_loss])
+		mlp = mx.symbol.Group([softmax_loss, center_loss])
 
 		# return the network architecture
 		return mlp
