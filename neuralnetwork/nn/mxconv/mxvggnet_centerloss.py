@@ -9,7 +9,7 @@ class MxVGGNetCl:
 		data = mx.sym.Variable("data")
 		
 		softmax_label = mx.symbol.Variable('softmax_label')
-    	center_label = mx.symbol.Variable('center_label')
+		center_label = mx.symbol.Variable('center_label')
 
 		# Block #1: (CONV => RELU) * 2 => POOL
 		conv1_1 = mx.sym.Convolution(data=data, kernel=(3, 3),
