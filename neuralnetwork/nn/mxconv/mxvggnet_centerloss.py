@@ -2,7 +2,7 @@
 import mxnet as mx
 from neuralnetwork.utils.mxcenter_loss import *
 
-class MxVGGNet:
+class MxVGGNetCl:
 	@staticmethod
 	def build(classes):
 		# data input
