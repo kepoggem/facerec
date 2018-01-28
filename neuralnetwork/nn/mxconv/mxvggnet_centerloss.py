@@ -123,8 +123,7 @@ class MxVGGNetCl:
 			name="embedding")
 		softmax_loss = mx.sym.SoftmaxOutput(data=embedding, label=softmax_label, name="softmax")
 		
-		center_loss_ = mx.symbol.Custom(data=embedding, label=center_label, name='center_loss_', op_type='centerloss',\
-        num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
+		center_loss_ = mx.symbol.Custom(data=embedding, label=center_label, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
 		center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
 		
 		mlp = mx.symbol.Group([softmax_loss, center_loss])

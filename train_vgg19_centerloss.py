@@ -81,11 +81,15 @@ else:
 	(model, argParams, auxParams) = mx.model.load_checkpoint(
 		checkpointsPath, args["start_epoch"])
 
+
+init_patterns = ['.*fc.*', '.*']
+init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier()]
+
 # compile the model
 model = mx.model.FeedForward(
 	ctx=[mx.gpu(0), mx.gpu(1)],
 	symbol=model,
-	initializer=mx.initializer.Xavier(),
+	initializer=mx.init.Mixed(init_patterns, init_methods),
 	arg_params=argParams,
 	aux_params=auxParams,
 	optimizer=opt,
