@@ -4,6 +4,7 @@
 # import the necessary packages
 from config import vggface2_config as config
 from neuralnetwork.nn.mxconv import MxVGGNetCl
+from neuralnetwork.nn.mxconv import MxVGGNet
 from vggface2prepare import VGGFace2Prepare
 from neuralnetwork.mxcallbacks import one_off_callback
 import mxnet as mx
@@ -72,7 +73,8 @@ auxParams = None
 if args["start_epoch"] <= 0:
 	# build the LeNet architecture
 	print("[INFO] building network...")
-	model = MxVGGNetCl.build(config.NUM_CLASSES)
+	#model = MxVGGNetCl.build(config.NUM_CLASSES)
+	model = MxVGGNet.build(config.NUM_CLASSES)
 
 # otherwise, a specific checkpoint was supplied
 else:
