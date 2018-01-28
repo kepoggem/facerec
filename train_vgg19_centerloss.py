@@ -15,6 +15,33 @@ import json
 import os
 from neuralnetwork.utils.mxcenter_loss import *
 
+class custom_mnist_iter(mx.io.DataIter):
+	def __init__(self, mnist_iter):
+		super(custom_mnist_iter,self).__init__()
+		self.data_iter = mnist_iter
+		self.batch_size = self.data_iter.batch_size
+
+	@property
+	def provide_data(self):
+		return self.data_iter.provide_data
+
+	@property
+	def provide_label(self):
+		provide_label = self.data_iter.provide_label[0]
+		return [('softmax_label', provide_label[1]), ('center_label', provide_label[1])]
+
+	def hard_reset(self):
+		self.data_iter.hard_reset()
+
+	def reset(self):
+		self.data_iter.reset()
+
+	def next(self):
+		batch = self.data_iter.next()
+		label = batch.label[0]
+
+		return mx.io.DataBatch(data=batch.data, label=[label,label], pad=batch.pad, index=batch.index)
+
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-c", "--checkpoints", required=True,
@@ -56,6 +83,10 @@ valIter = mx.io.ImageRecordIter(
 	mean_r=means["R"],
 	mean_g=means["G"],
 	mean_b=means["B"])
+	
+
+trainIterCustom = custom_mnist_iter(trainIter)
+valIterCustom = custom_mnist_iter(trainIter)
 
 # initialize the optimizer
 opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
@@ -102,15 +133,15 @@ model = mx.model.FeedForward(
 batchEndCBs = [mx.callback.Speedometer(batchSize, 10)]
 epochEndCBs = [mx.callback.do_checkpoint(checkpointsPath)]
 #metrics = [mx.metric.Accuracy(), CenterLossMetric()]
-metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
-#metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
+#metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
+metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
 
 
 # train the network
 print("[INFO] training network...")
 model.fit(
-	X=trainIter,
-	eval_data=valIter,
+	X=trainIterCustom,
+	eval_data=valIterCustom,
 	eval_metric=metrics,
 	batch_end_callback=batchEndCBs,
 	epoch_end_callback=epochEndCBs)
