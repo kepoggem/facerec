@@ -105,4 +105,4 @@ model.fit(
 	eval_data=valIter,
 	eval_metric=metrics,
 	batch_end_callback=batchEndCBs,
-	epoch_end_callback=epochEndCBs)
+	epoch_end_callback=mx.callback.do_checkpoint("~/dcnn/datasets/vggface2/checkpoints/vgg19cl_checkpoints/"))
