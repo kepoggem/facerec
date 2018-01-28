@@ -120,10 +120,10 @@ class MxVGGNetCl:
 		softmax_loss = mx.sym.SoftmaxOutput(data=fc3, name="softmax")
 		
 		
-		#center_loss_ = mx.symbol.Custom(data=fc3, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
-		#center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
+		center_loss_ = mx.symbol.Custom(data=fc3, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
+		center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
 		
-		return softmax_loss
+		return center_loss
 		
 		#mlp = mx.symbol.Group([softmax_loss, center_loss])
 
