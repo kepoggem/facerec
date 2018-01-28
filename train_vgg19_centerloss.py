@@ -101,7 +101,7 @@ model = mx.model.FeedForward(
 # initialize the callbacks and evaluation metrics
 batchEndCBs = [mx.callback.Speedometer(batchSize, 10)]
 epochEndCBs = [mx.callback.do_checkpoint(checkpointsPath)]
-metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
+#metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
 metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
 
 
