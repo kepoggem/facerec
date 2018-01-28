@@ -8,7 +8,7 @@ class MxVGGNetCl:
 		# data input
 		data = mx.sym.Variable("data")
 		#softmax_label = mx.symbol.Variable('softmax_label')
-		#center_label = mx.symbol.Variable('center_label')
+		center_label = mx.symbol.Variable('center_label')
 
 		# Block #1: (CONV => RELU) * 2 => POOL
 		conv1_1 = mx.sym.Convolution(data=data, kernel=(3, 3),
@@ -116,19 +116,16 @@ class MxVGGNetCl:
 			name="act7_1")
 		bn7_1 = mx.sym.BatchNorm(data=act7_1, name="bn7_1")
 		do7 = mx.sym.Dropout(data=bn7_1, p=0.5)
-		
-		fc2_1 = mx.sym.FullyConnected(data=do7, num_hidden=1, name="fc2_1")
 
 		# softmax classifier
-		fc3 = mx.sym.FullyConnected(data=fc2_1, num_hidden=classes, name="fc3")
+		fc3 = mx.sym.FullyConnected(data=do7, num_hidden=classes, name="fc3")
 		softmax = mx.sym.SoftmaxOutput(data=fc3, name="softmax")
 		
-		
-		center_loss_ = mx.symbol.Custom(data=fc2_1, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
+		center_loss_ = mx.symbol.Custom(data=fc3, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
 		center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
 		
-		#return softmax_loss
-		mlp = softmax + center_loss
+		return center_loss
+		#mlp = softmax + center_loss
 		#mlp = mx.symbol.Group([softmax, center_loss])
 
 		# return the network architecture
