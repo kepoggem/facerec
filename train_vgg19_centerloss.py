@@ -74,7 +74,7 @@ if args["start_epoch"] <= 0:
 	# build the LeNet architecture
 	print("[INFO] building network...")
 	#model = MxVGGNetCl.build(config.NUM_CLASSES)
-	model = MxVGGNet.build(config.NUM_CLASSES)
+	model = MxVGGNetCl.build(config.NUM_CLASSES)
 
 # otherwise, a specific checkpoint was supplied
 else:
@@ -101,8 +101,8 @@ model = mx.model.FeedForward(
 # initialize the callbacks and evaluation metrics
 batchEndCBs = [mx.callback.Speedometer(batchSize, 10)]
 epochEndCBs = [mx.callback.do_checkpoint(checkpointsPath)]
-#metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
-metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
+metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
+#metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
 
 
 # train the network
