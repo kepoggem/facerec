@@ -8,7 +8,7 @@ class MxVGGNetCl:
 		# data input
 		data = mx.sym.Variable("data")
 		#softmax_label = mx.symbol.Variable('softmax_label')
-		center_label = mx.symbol.Variable('center_label')
+		#center_label = mx.symbol.Variable('center_label')
 
 		# Block #1: (CONV => RELU) * 2 => POOL
 		conv1_1 = mx.sym.Convolution(data=data, kernel=(3, 3),
@@ -117,7 +117,7 @@ class MxVGGNetCl:
 		bn7_1 = mx.sym.BatchNorm(data=act7_1, name="bn7_1")
 		do7 = mx.sym.Dropout(data=bn7_1, p=0.5)
 		
-		fc2_1 = mx.sym.FullyConnected(data=do7, num_hidden=2, name="fc2_1")
+		fc2_1 = mx.sym.FullyConnected(data=do7, num_hidden=1, name="fc2_1")
 
 		# softmax classifier
 		fc3 = mx.sym.FullyConnected(data=fc2_1, num_hidden=classes, name="fc3")
