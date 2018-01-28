@@ -119,8 +119,7 @@ class MxVGGNetCl:
 		do7 = mx.sym.Dropout(data=bn7_1, p=0.5)
 
 		# softmax classifier
-		embedding = mx.sym.FullyConnected(data=do7, num_hidden=classes,
-			name="embedding")
+		embedding = mx.sym.FullyConnected(data=do7, num_hidden=classes, name="embedding")
 		softmax_loss = mx.sym.SoftmaxOutput(data=embedding, name="softmax")
 		
 		center_loss_ = mx.symbol.Custom(data=embedding, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
