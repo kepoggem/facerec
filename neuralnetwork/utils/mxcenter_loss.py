@@ -10,6 +10,7 @@ import mxnet as mx
 class Accuracy(mx.metric.EvalMetric):
 	def __init__(self, num=None):
 		super(Accuracy, self).__init__('accuracy', num)
+		self.num = num
 
 	def update(self, labels, preds):
 		mx.metric.check_label_shapes(labels, preds)
