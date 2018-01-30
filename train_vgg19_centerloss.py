@@ -134,7 +134,7 @@ batchEndCBs = [mx.callback.Speedometer(batchSize, 10)]
 epochEndCBs = [mx.callback.do_checkpoint(checkpointsPath)]
 #metrics = [mx.metric.Accuracy(), CenterLossMetric()]
 #metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy()]
-metrics = [mx.metric.Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
+metrics = [Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
 
 
 # train the network
