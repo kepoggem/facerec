@@ -133,6 +133,8 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     #    wd                 = 0.0001,
     #    initializer        = mx.init.Mixed(init_patterns, init_methods),
     #    **model_args)
+    argParams = None
+    auxParams = None
     opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001, rescale_grad=1.0 / 32)
     
     model = mx.model.FeedForward(
