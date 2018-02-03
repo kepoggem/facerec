@@ -42,7 +42,7 @@ class custom_mnist_iter(mx.io.DataIter):
 		label = batch.label[0]
 		print("data_iter.batch_size")
 		print(self.data_iter.batch_size)
-		for bat in batch
+		for bat in batch.data
 			print i
 			i = i + 1
 
