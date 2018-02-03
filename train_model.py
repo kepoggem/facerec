@@ -144,8 +144,7 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     arg_params=argParams,
     aux_params=auxParams,
     optimizer=opt,
-    num_epoch=110,
-    begin_epoch=args["start_epoch"])
+    num_epoch=110)
 
     if batch_end_callback is not None:
         if not isinstance(batch_end_callback, list):
