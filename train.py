@@ -37,7 +37,7 @@ args = parser.parse_args()
 # mnist input shape
 data_shape = (3,227,227)
 
-def get_symbol(batchsize=64):
+def get_symbol(batchsize=32):
 	"""
 	LeCun, Yann, Leon Bottou, Yoshua Bengio, and Patrick
 	Haffner. "Gradient-based learning applied to document recognition."
