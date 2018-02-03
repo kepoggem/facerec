@@ -19,7 +19,8 @@ class custom_mnist_iter(mx.io.DataIter):
 	def __init__(self, mnist_iter):
 		super(custom_mnist_iter,self).__init__()
 		self.data_iter = mnist_iter
-		self.batch_size = self.data_iter.batch_size
+		#self.batch_size = self.data_iter.batch_size
+		self.batch_size = 64
 
 	@property
 	def provide_data(self):
