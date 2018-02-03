@@ -39,10 +39,10 @@ def visual_feature_space(features,labels, num_classes, name_dict):
 
 def main():
     # load model, get embedding layer
-    model = mx.model.FeedForward.load('center_loss', 1, ctx=mx.cpu(0), numpy_batch_size=1)
+    model = mx.model.FeedForward.load('center_loss', 1, ctx=[mx.gpu(0)], numpy_batch_size=1)
     internals = model.symbol.get_internals()
     embedding_layer = internals['embedding_output']
-    feature_extractor = mx.model.FeedForward(ctx=mx.cpu(0), symbol=embedding_layer, numpy_batch_size=1,\
+    feature_extractor = mx.model.FeedForward(ctx=[mx.gpu(0)], symbol=embedding_layer, numpy_batch_size=1,\
             arg_params = model.arg_params, aux_params=model.aux_params, allow_extra_params=True)
     print('feature_extractor loaded')
 
