@@ -120,18 +120,31 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
         kv = None
     
     init_patterns = ['.*fc.*', '.*']
-    init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier(factor_type="out", rnd_type="gaussian", magnitude=2.0)]
+    #init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier(factor_type="out", rnd_type="gaussian", magnitude=2.0)]
+	init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier()]
 
     print('dev is ',devs)
+    #model = mx.model.FeedForward(
+    #    ctx                = [mx.gpu(0), mx.gpu(1)],
+    #    symbol             = network,
+    #    num_epoch          = args.num_epochs,
+    #    learning_rate      = 1e-2,
+    #    momentum           = 0.9,
+    #    wd                 = 0.0001,
+    #    initializer        = mx.init.Mixed(init_patterns, init_methods),
+    #    **model_args)
+    opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
+	rescale_grad=1.0 / 32)
+    
     model = mx.model.FeedForward(
-        ctx                = [mx.gpu(0), mx.gpu(1)],
-        symbol             = network,
-        num_epoch          = args.num_epochs,
-        learning_rate      = args.lr,
-        momentum           = 0.9,
-        wd                 = 0.0005,
-        initializer        = mx.init.Mixed(init_patterns, init_methods),
-        **model_args)
+    	ctx=[mx.gpu(0), mx.gpu(1)],
+		symbol=network,
+		initializer=mx.init.Mixed(init_patterns, init_methods),
+		arg_params=argParams,
+		aux_params=auxParams,
+		optimizer=opt,
+		num_epoch=110,
+		begin_epoch=args["start_epoch"]
 
     if batch_end_callback is not None:
         if not isinstance(batch_end_callback, list):
