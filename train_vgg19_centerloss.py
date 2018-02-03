@@ -87,7 +87,7 @@ valIter = mx.io.ImageRecordIter(
 	
 
 trainIterCustom = custom_mnist_iter(trainIter)
-valIterCustom = custom_mnist_iter(trainIter)
+valIterCustom = custom_mnist_iter(valIter)
 
 # initialize the optimizer
 opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
