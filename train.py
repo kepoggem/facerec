@@ -155,7 +155,7 @@ def get_symbol(batchsize=64):
 	act7_1 = mx.sym.LeakyReLU(data=fc2, act_type="prelu",
 		name="act7_1")
 	bn7_1 = mx.sym.BatchNorm(data=act7_1, name="bn7_1")
-	do7 = mx.sym.Dropout(data=bn7_1, p=0.5)   this results in 32 vector?
+	do7 = mx.sym.Dropout(data=bn7_1, p=0.5)
 
 	# softmax classifier
 	
