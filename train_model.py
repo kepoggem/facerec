@@ -47,7 +47,7 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     model_args = {}
     if args.start_epoch is not None:
         assert prefix is not None
-        checkpointsPath = os.path.sep.join([args["checkpoints"], args["prefix"]])
+        checkpointsPath = os.path.sep.join([args.checkpoints, args.prefix])
         tmp = mx.model.FeedForward.load(checkpointsPath, args.start_epoch)
         
         # only add those with the same shape
