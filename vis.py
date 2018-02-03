@@ -3,7 +3,8 @@ import mxnet as mx
 import numpy as np
 from data import mnist_iterator
 import logging
-from center_loss import *
+#from center_loss import *
+from neuralnetwork.utils.mxcenter_loss import *
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as PathEffects
