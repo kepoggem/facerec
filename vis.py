@@ -42,13 +42,13 @@ def main():
     embedding_layer = internals['embedding_output']
     feature_extractor = mx.model.FeedForward(ctx=mx.cpu(0), symbol=embedding_layer, numpy_batch_size=1,\
             arg_params = model.arg_params, aux_params=model.aux_params, allow_extra_params=True)
-    print 'feature_extractor loaded'
+    print('feature_extractor loaded')
 
     # load MNIST data 
     _, val = mnist_iterator(batch_size=32, input_shape=(3,227,227))
     
     # extract feature 
-    print 'extracting feature'
+    print('extracting feature')
     embeds = []
     labels = []
     for i in val:
@@ -59,8 +59,8 @@ def main():
     embeds = np.vstack(embeds)
     labels = np.hstack(labels)
 
-    print 'embeds shape is ', embeds.shape
-    print 'labels shape is ', labels.shape
+    print('embeds shape is ', embeds.shape)
+    print ('labels shape is ', labels.shape)
 
     # prepare dict for display
     namedict = dict()
