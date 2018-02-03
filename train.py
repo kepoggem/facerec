@@ -19,7 +19,7 @@ parser.add_argument('--checkpoints', type=str,default='~/dcnn/datasets/vggface2/
                     help='the prefix of the model to save')
 parser.add_argument('--num-epochs', type=int, default=20,
                     help='the number of training epochs')
-parser.add_argument('--load-epoch', type=int,
+parser.add_argument('--start-epoch', type=int,
                     help="load the model on an epoch using the model-prefix")
 parser.add_argument('--kv-store', type=str, default='local',
                     help='the kvstore type')
@@ -27,7 +27,6 @@ parser.add_argument('--log_file', type=str, default='training_vgg19cl_log.txt',
                     help='log file')
 parser.add_argument('--log_dir', type=str, default='.',
                     help='log dir')
-parser.add_argument("-s", "--start-epoch", type=int, default=0, help="epoch to restart training at")
 # construct the argument parse and parse the arguments
 #parser.add_argument("-c", "--checkpoints", required=True,
 #	help="path to output checkpoint directory")
