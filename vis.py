@@ -33,7 +33,8 @@ def visual_feature_space(features,labels, num_classes, name_dict):
             PathEffects.Stroke(linewidth=5, foreground="w"),
             PathEffects.Normal()])
         txts.append(txt)
-    plt.show()
+    #plt.show()
+    plt.savefig('centerloss.png')
     return f, ax, sc, txts
 
 def main():
