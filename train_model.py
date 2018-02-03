@@ -121,7 +121,7 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     
     init_patterns = ['.*fc.*', '.*']
     #init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier(factor_type="out", rnd_type="gaussian", magnitude=2.0)]
-	init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier()]
+    init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier()]
 
     print('dev is ',devs)
     #model = mx.model.FeedForward(
