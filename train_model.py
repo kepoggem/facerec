@@ -43,11 +43,11 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
         logging.info('start with arguments %s', args)
 
     # load model
-    model_prefix = args.model_prefix
+    prefix = args.prefix
     model_args = {}
-    if args.load_epoch is not None:
-        assert model_prefix is not None
-        tmp = mx.model.FeedForward.load(model_prefix, args.load_epoch)
+    if args.start_epoch is not None:
+        assert prefix is not None
+        tmp = mx.model.FeedForward.load(prefix, args.start_epoch)
         
         # only add those with the same shape
         arg_dict, aux_dict = get_model_dict( network, data_shape )
@@ -86,12 +86,12 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
 
         model_args = {'arg_params' : valid_arg,
                       'aux_params' : valid_aux,
-                      'begin_epoch' : args.load_epoch}
+                      'begin_epoch' : args.start_epoch}
     # save model
-    save_model_prefix = args.save_model_prefix
-    if save_model_prefix is None:
-        save_model_prefix = model_prefix
-    checkpoint = None if save_model_prefix is None else mx.callback.do_checkpoint(save_model_prefix)
+    checkpoints = args.checkpoints
+    if checkpoints is None:
+        checkpoints = prefix
+    checkpoint = None if checkpoints is None else mx.callback.do_checkpoint(checkpoints)
 
     # data
     (train, val) = data_loader
@@ -100,24 +100,24 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     devs = mx.cpu() if args.gpus is '' else [
         mx.gpu(int(i)) for i in args.gpus.split(',')]
 
-    epoch_size = args.num_examples / args.batch_size
+    #epoch_size = args.num_examples / args.batch_size
 
-    if args.kv_store == 'dist_sync':
-        epoch_size /= kv.num_workers
-        model_args['epoch_size'] = epoch_size
+    #if args.kv_store == 'dist_sync':
+     #   epoch_size /= kv.num_workers
+      #  model_args['epoch_size'] = epoch_size
 
-    if 'lr_factor' in args and args.lr_factor < 1:
-        model_args['lr_scheduler'] = mx.lr_scheduler.FactorScheduler(
-            step = max(int(epoch_size * args.lr_factor_epoch), 1),
-            factor = args.lr_factor)
+    #if 'lr_factor' in args and args.lr_factor < 1:
+     #   model_args['lr_scheduler'] = mx.lr_scheduler.FactorScheduler(
+     #       step = max(int(epoch_size * args.lr_factor_epoch), 1),
+     #       factor = args.lr_factor)
 
-    if 'clip_gradient' in args and args.clip_gradient is not None:
-        model_args['clip_gradient'] = args.clip_gradient
+    #if 'clip_gradient' in args and args.clip_gradient is not None:
+     #   model_args['clip_gradient'] = args.clip_gradient
 
     # disable kvstore for single device
-    if 'local' in kv.type and (
-            args.gpus is None or len(args.gpus.split(',')) is 1):
-        kv = None
+    #if 'local' in kv.type and (
+    #        args.gpus is None or len(args.gpus.split(',')) is 1):
+    #    kv = None
     
     init_patterns = ['.*fc.*', '.*']
     #init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier(factor_type="out", rnd_type="gaussian", magnitude=2.0)]

@@ -13,17 +13,9 @@ parser.add_argument('--gpus', type=str, default='',
                     help='the gpus will be used, e.g "0,1,2,3"')
 parser.add_argument('--batch-size', type=int, default=32,
                     help='the batch size')
-parser.add_argument('--num-examples', type=int, default=60000,
-                    help='the number of training examples')
-parser.add_argument('--lr', type=float, default=.01,
-                    help='the initial learning rate')
-parser.add_argument('--lr-factor', type=float, default=0.5,
-                    help='times the lr with a factor for every lr-factor-epoch epoch')
-parser.add_argument('--lr-factor-epoch', type=float, default=20,
-                    help='the number of epoch to factor the lr, could be .5')
-parser.add_argument('--model-prefix', type=str,
+parser.add_argument('--prefix', type=str,
                     help='the prefix of the model to load')
-parser.add_argument('--save-model-prefix', type=str,default='center_loss',
+parser.add_argument('--checkpoints', type=str,default='~/dcnn/datasets/vggface2/checkpoints/vgg19cl_checkpoint',
                     help='the prefix of the model to save')
 parser.add_argument('--num-epochs', type=int, default=20,
                     help='the number of training epochs')
@@ -31,16 +23,16 @@ parser.add_argument('--load-epoch', type=int,
                     help="load the model on an epoch using the model-prefix")
 parser.add_argument('--kv-store', type=str, default='local',
                     help='the kvstore type')
-parser.add_argument('--log_file', type=str, default='log.txt',
+parser.add_argument('--log_file', type=str, default='training_vgg19cl_log.txt',
                     help='log file')
 parser.add_argument('--log_dir', type=str, default='.',
                     help='log dir')
 parser.add_argument("-s", "--start-epoch", type=int, default=0, help="epoch to restart training at")
 # construct the argument parse and parse the arguments
-parser.add_argument("-c", "--checkpoints", required=True,
-	help="path to output checkpoint directory")
-parser.add_argument("-p", "--prefix", required=True,
-	help="name of model prefix")
+#parser.add_argument("-c", "--checkpoints", required=True,
+#	help="path to output checkpoint directory")
+#parser.add_argument("-p", "--prefix", required=True,
+#	help="name of model prefix")
 parser.add_argument("-s", "--start-epoch", type=int, default=0,
 	help="epoch to restart training at")
 args = parser.parse_args()
@@ -185,22 +177,13 @@ def main():
 	batchsize = args.batch_size if args.gpus is '' else args.batch_size / len(args.gpus.split(','))
 	print('batchsize is ', batchsize)
 	
-	if args["start_epoch"] <= 0:
-	# build the LeNet architecture
-	print("[INFO] building network...")
-	#model = MxVGGNetCl.build(config.NUM_CLASSES)
-	net = get_symbol(batchsize)
-
-	# otherwise, a specific checkpoint was supplied
-	else:
-	# load the checkpoint from disk
-	print("[INFO] loading epoch {}...".format(args["start_epoch"]))
-	(net, argParams, auxParams) = mx.model.load_checkpoint(
-		checkpointsPath, args["start_epoch"])
-
+	# set the logging level and output file
+	logging.basicConfig(level=logging.DEBUG,
+	filename="training_vgg19cl_{}.log".format(args["start_epoch"]),
+	filemode="w")
 	
 	# define network structure
-	#net = get_symbol(batchsize)
+	net = get_symbol(batchsize)
 	
 	# load data
 	train, val = mnist_iterator(batch_size=args.batch_size, input_shape=data_shape)
