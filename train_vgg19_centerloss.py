@@ -124,7 +124,7 @@ init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier()]
 
 # compile the model
 model = mx.model.FeedForward(
-	ctx=[mx.gpu(0), mx.gpu(1)],
+	ctx=[mx.gpu(0)],
 	symbol=model,
 	initializer=mx.init.Mixed(init_patterns, init_methods),
 	arg_params=argParams,
