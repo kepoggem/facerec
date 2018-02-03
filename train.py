@@ -176,7 +176,7 @@ def main():
 	
 	# set the logging level and output file
 	logging.basicConfig(level=logging.DEBUG,
-	filename="training_vgg19cl_{}.log".format(args["start_epoch"]),
+	filename="training_vgg19cl_{}.log".format(args.start_epoch),
 	filemode="w")
 	
 	# define network structure
