@@ -32,8 +32,6 @@ parser.add_argument('--log_dir', type=str, default='.',
 #	help="path to output checkpoint directory")
 #parser.add_argument("-p", "--prefix", required=True,
 #	help="name of model prefix")
-parser.add_argument("-s", "--start-epoch", type=int, default=0,
-	help="epoch to restart training at")
 args = parser.parse_args()
 
 # mnist input shape
