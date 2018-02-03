@@ -163,7 +163,7 @@ def get_symbol(batchsize=64):
 	embedding = mx.symbol.FullyConnected(data=do7, num_hidden=2, name='embedding')
 	
 	# second fullc
-	fc3 = mx.symbol.FullyConnected(data=embedding, num_hidden=classes, name='fc3')
+	fc3 = mx.symbol.FullyConnected(data=embedding, num_hidden=config.NUM_CLASSES, name='fc3')
 	
 	ce_loss = mx.symbol.SoftmaxOutput(data=fc3, label=softmax_label, name='softmax')
 	
