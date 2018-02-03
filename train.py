@@ -20,7 +20,7 @@ parser.add_argument('--checkpoints', type=str,default='~/dcnn/datasets/vggface2/
 parser.add_argument('--num-epochs', type=int, default=20,
                     help='the number of training epochs')
 parser.add_argument('--start-epoch', type=int,
-                    help="load the model on an epoch using the model-prefix", default=0)
+                    help="load the model on an epoch using the model-prefix")
 parser.add_argument('--kv-store', type=str, default='local',
                     help='the kvstore type')
 parser.add_argument('--log_file', type=str, default='training_vgg19cl_log.txt',
@@ -175,9 +175,15 @@ def main():
 	print('batchsize is ', batchsize)
 	
 	# set the logging level and output file
-	logging.basicConfig(level=logging.DEBUG,
-	filename="training_vgg19cl_{}.log".format(args.start_epoch),
-	filemode="w")
+	if args.start_epoch is None:
+		epoch = 0
+		logging.basicConfig(level=logging.DEBUG,
+		filename="training_vgg19cl_{}.log".format(epoch),
+		filemode="w")
+	else:
+		logging.basicConfig(level=logging.DEBUG,
+		filename="training_vgg19cl_{}.log".format(args.start_epoch),
+		filemode="w")
 	
 	# define network structure
 	net = get_symbol(batchsize)
