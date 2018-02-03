@@ -3,6 +3,7 @@ import mxnet as mx
 import numpy as np
 from data import mnist_iterator
 import logging
+from config import vggface2_config as config
 #from center_loss import *
 from neuralnetwork.utils.mxcenter_loss import *
 import seaborn as sns
@@ -69,7 +70,7 @@ def main():
     for i in range(10):
         namedict[i]=str(i)
 
-    visual_feature_space(embeds, labels, 10, namedict)
+    visual_feature_space(embeds, labels, config.NUM_CLASSES, namedict)
 
 if __name__ == "__main__":
     main()

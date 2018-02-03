@@ -11,7 +11,7 @@ from config import vggface2_config as config
 parser = argparse.ArgumentParser(description='train mnist use softmax and centerloss')
 parser.add_argument('--gpus', type=str, default='',
                     help='the gpus will be used, e.g "0,1,2,3"')
-parser.add_argument('--batch-size', type=int, default=100,
+parser.add_argument('--batch-size', type=int, default=32,
                     help='the batch size')
 parser.add_argument('--num-examples', type=int, default=60000,
                     help='the number of training examples')
@@ -36,6 +36,13 @@ parser.add_argument('--log_file', type=str, default='log.txt',
 parser.add_argument('--log_dir', type=str, default='.',
                     help='log dir')
 parser.add_argument("-s", "--start-epoch", type=int, default=0, help="epoch to restart training at")
+# construct the argument parse and parse the arguments
+parser.add_argument("-c", "--checkpoints", required=True,
+	help="path to output checkpoint directory")
+parser.add_argument("-p", "--prefix", required=True,
+	help="name of model prefix")
+parser.add_argument("-s", "--start-epoch", type=int, default=0,
+	help="epoch to restart training at")
 args = parser.parse_args()
 
 # mnist input shape
@@ -178,8 +185,22 @@ def main():
 	batchsize = args.batch_size if args.gpus is '' else args.batch_size / len(args.gpus.split(','))
 	print('batchsize is ', batchsize)
 	
-	# define network structure
+	if args["start_epoch"] <= 0:
+	# build the LeNet architecture
+	print("[INFO] building network...")
+	#model = MxVGGNetCl.build(config.NUM_CLASSES)
 	net = get_symbol(batchsize)
+
+	# otherwise, a specific checkpoint was supplied
+	else:
+	# load the checkpoint from disk
+	print("[INFO] loading epoch {}...".format(args["start_epoch"]))
+	(net, argParams, auxParams) = mx.model.load_checkpoint(
+		checkpointsPath, args["start_epoch"])
+
+	
+	# define network structure
+	#net = get_symbol(batchsize)
 	
 	# load data
 	train, val = mnist_iterator(batch_size=args.batch_size, input_shape=data_shape)
