@@ -15,7 +15,7 @@ import json
 import os
 from neuralnetwork.utils.mxcenter_loss import *
 
-class custom_mnist_iter(mx.io.DataIter(batch_size=64)):
+class custom_mnist_iter(mx.io.DataIter):
 	def __init__(self, mnist_iter):
 		super(custom_mnist_iter,self).__init__()
 		self.data_iter = mnist_iter
