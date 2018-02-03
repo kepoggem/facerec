@@ -35,6 +35,7 @@ parser.add_argument('--log_file', type=str, default='log.txt',
                     help='log file')
 parser.add_argument('--log_dir', type=str, default='.',
                     help='log dir')
+parser.add_argument("-s", "--start-epoch", type=int, default=0, help="epoch to restart training at")
 args = parser.parse_args()
 
 # mnist input shape
