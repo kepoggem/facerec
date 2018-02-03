@@ -133,18 +133,17 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     #    wd                 = 0.0001,
     #    initializer        = mx.init.Mixed(init_patterns, init_methods),
     #    **model_args)
-    opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
-	rescale_grad=1.0 / 32)
+    opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001, rescale_grad=1.0 / 32)
     
     model = mx.model.FeedForward(
-    	ctx=[mx.gpu(0), mx.gpu(1)],
-		symbol=network,
-		initializer=mx.init.Mixed(init_patterns, init_methods),
-		arg_params=argParams,
-		aux_params=auxParams,
-		optimizer=opt,
-		num_epoch=110,
-		begin_epoch=args["start_epoch"]
+    ctx=[mx.gpu(0), mx.gpu(1)],
+    symbol=network,
+    initializer=mx.init.Mixed(init_patterns, init_methods),
+    arg_params=argParams,
+    aux_params=auxParams,
+    optimizer=opt,
+    num_epoch=110,
+    begin_epoch=args["start_epoch"]
 
     if batch_end_callback is not None:
         if not isinstance(batch_end_callback, list):
