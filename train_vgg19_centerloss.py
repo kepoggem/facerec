@@ -41,7 +41,7 @@ class custom_mnist_iter(mx.io.DataIter):
 		batch = self.data_iter.next()
 		label = batch.label[0]
 		print("data_iter.batch_size")
-		print(data_iter.batch_size)
+		print(self.data_iter.batch_size)
 
 		return mx.io.DataBatch(data=batch.data, label=[label,label], pad=batch.pad, index=batch.index)
 
