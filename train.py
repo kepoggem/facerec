@@ -4,7 +4,7 @@ import numpy as np
 from neuralnetwork.utils.mxcenter_loss import *
 from data import mnist_iterator
 import logging
-#import train_model
+import train_model
 import argparse
 from config import vggface2_config as config
 
