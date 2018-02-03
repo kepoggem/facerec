@@ -10,3 +10,111 @@
 2018-01-30 23:11:30,780 Node[0] Start training with [gpu(0), gpu(1)]
 2018-01-30 23:12:17,335 Node[0] start with arguments Namespace(batch_size=64, gpus='', kv_store='local', load_epoch=None, log_dir='.', log_file='log.txt', lr=0.01, lr_factor=0.5, lr_factor_epoch=20, model_prefix=None, num_epochs=20, num_examples=60000, save_model_prefix='center_loss')
 2018-01-30 23:12:17,351 Node[0] Start training with [gpu(0), gpu(1)]
+2018-02-03 16:54:17,759 Node[0] start with arguments Namespace(batch_size=100, gpus='', kv_store='local', load_epoch=None, log_dir='.', log_file='log.txt', lr=0.01, lr_factor=0.5, lr_factor_epoch=20, model_prefix=None, num_epochs=20, num_examples=60000, save_model_prefix='center_loss')
+2018-02-03 16:54:17,783 Node[0] Start training with [gpu(0), gpu(1)]
+2018-02-03 16:56:16,327 Node[0] start with arguments Namespace(batch_size=100, gpus='', kv_store='local', load_epoch=None, log_dir='.', log_file='log.txt', lr=0.01, lr_factor=0.5, lr_factor_epoch=20, model_prefix=None, num_epochs=20, num_examples=60000, save_model_prefix='center_loss')
+2018-02-03 16:56:16,349 Node[0] Start training with [gpu(0), gpu(1)]
+2018-02-03 16:56:59,681 Node[0] start with arguments Namespace(batch_size=32, gpus='', kv_store='local', load_epoch=None, log_dir='.', log_file='log.txt', lr=0.01, lr_factor=0.5, lr_factor_epoch=20, model_prefix=None, num_epochs=20, num_examples=60000, save_model_prefix='center_loss')
+2018-02-03 16:56:59,698 Node[0] Start training with [gpu(0), gpu(1)]
+2018-02-03 16:57:05,520 Node[0] Epoch[0] Batch [50]	Speed: 574.35 samples/sec	accuracy=0.000625	center_loss=261.309827
+2018-02-03 16:57:08,334 Node[0] Epoch[0] Batch [100]	Speed: 568.46 samples/sec	accuracy=0.000000	center_loss=4716.217681
+2018-02-03 16:57:11,154 Node[0] Epoch[0] Batch [150]	Speed: 567.58 samples/sec	accuracy=0.000625	center_loss=2289891.233828
+2018-02-03 16:57:13,975 Node[0] Epoch[0] Batch [200]	Speed: 567.12 samples/sec	accuracy=0.000313	center_loss=691021710.055000
+2018-02-03 16:57:16,800 Node[0] Epoch[0] Batch [250]	Speed: 566.55 samples/sec	accuracy=0.000313	center_loss=116129289232.000000
+2018-02-03 16:57:19,604 Node[0] Epoch[0] Batch [300]	Speed: 570.58 samples/sec	accuracy=0.000625	center_loss=33801359559065.601562
+2018-02-03 16:57:22,424 Node[0] Epoch[0] Batch [350]	Speed: 567.47 samples/sec	accuracy=0.000625	center_loss=8423307587344138.000000
+2018-02-03 16:57:25,239 Node[0] Epoch[0] Batch [400]	Speed: 568.36 samples/sec	accuracy=0.001250	center_loss=2681904244414187008.000000
+2018-02-03 16:57:28,051 Node[0] Epoch[0] Batch [450]	Speed: 569.01 samples/sec	accuracy=0.000313	center_loss=711800741645914341376.000000
+2018-02-03 16:57:30,881 Node[0] Epoch[0] Batch [500]	Speed: 565.49 samples/sec	accuracy=0.000313	center_loss=175098443388711365246976.000000
+2018-02-03 16:57:33,680 Node[0] Epoch[0] Batch [550]	Speed: 571.70 samples/sec	accuracy=0.000625	center_loss=39130994803470224274227200.000000
+2018-02-03 16:57:36,510 Node[0] Epoch[0] Batch [600]	Speed: 565.33 samples/sec	accuracy=0.000313	center_loss=9245352231017150468451205120.000000
+2018-02-03 16:57:39,351 Node[0] Epoch[0] Batch [650]	Speed: 563.30 samples/sec	accuracy=0.000313	center_loss=2428159955385440351573935915008.000000
+2018-02-03 16:57:42,194 Node[0] Epoch[0] Batch [700]	Speed: 562.83 samples/sec	accuracy=0.000625	center_loss=530248603421700915401324981387264.000000
+2018-02-03 16:57:44,993 Node[0] Epoch[0] Batch [750]	Speed: 571.72 samples/sec	accuracy=0.000937	center_loss=130972798410473896041365481828909056.000000
+2018-02-03 16:57:47,832 Node[0] Epoch[0] Batch [800]	Speed: 563.64 samples/sec	accuracy=0.000937	center_loss=inf
+2018-02-03 16:57:50,630 Node[0] Epoch[0] Batch [850]	Speed: 571.92 samples/sec	accuracy=0.000625	center_loss=nan
+2018-02-03 17:33:13,691 Node[0] start with arguments Namespace(batch_size=32, gpus='', kv_store='local', load_epoch=None, log_dir='.', log_file='log.txt', lr=0.01, lr_factor=0.5, lr_factor_epoch=20, model_prefix=None, num_epochs=20, num_examples=60000, save_model_prefix='center_loss')
+2018-02-03 17:33:13,717 Node[0] Start training with [gpu(0), gpu(1)]
+2018-02-03 17:33:19,520 Node[0] Epoch[0] Batch [50]	Speed: 571.60 samples/sec	accuracy=0.000313	center_loss=275.418174
+2018-02-03 17:33:22,370 Node[0] Epoch[0] Batch [100]	Speed: 561.38 samples/sec	accuracy=0.000625	center_loss=6194.295602
+2018-02-03 17:33:25,235 Node[0] Epoch[0] Batch [150]	Speed: 558.53 samples/sec	accuracy=0.000000	center_loss=3090453.976523
+2018-02-03 17:33:28,084 Node[0] Epoch[0] Batch [200]	Speed: 561.76 samples/sec	accuracy=0.000313	center_loss=682714632.100000
+2018-02-03 17:33:30,965 Node[0] Epoch[0] Batch [250]	Speed: 555.43 samples/sec	accuracy=0.001250	center_loss=124103607086.080002
+2018-02-03 17:33:33,822 Node[0] Epoch[0] Batch [300]	Speed: 560.44 samples/sec	accuracy=0.000313	center_loss=28453878145024.000000
+2018-02-03 17:33:36,631 Node[0] Epoch[0] Batch [350]	Speed: 569.74 samples/sec	accuracy=0.000937	center_loss=8456365311493407.000000
+2018-02-03 17:33:39,452 Node[0] Epoch[0] Batch [400]	Speed: 567.11 samples/sec	accuracy=0.000937	center_loss=2409861965792726016.000000
+2018-02-03 17:33:42,279 Node[0] Epoch[0] Batch [450]	Speed: 566.12 samples/sec	accuracy=0.000313	center_loss=678218612777586393088.000000
+2018-02-03 17:33:45,124 Node[0] Epoch[0] Batch [500]	Speed: 562.45 samples/sec	accuracy=0.000625	center_loss=193318586279414277865472.000000
+2018-02-03 17:33:47,946 Node[0] Epoch[0] Batch [550]	Speed: 566.92 samples/sec	accuracy=0.000625	center_loss=58251576491881188061872128.000000
+2018-02-03 17:33:50,798 Node[0] Epoch[0] Batch [600]	Speed: 561.18 samples/sec	accuracy=0.000000	center_loss=17980038670749509284467310592.000000
+2018-02-03 17:33:53,643 Node[0] Epoch[0] Batch [650]	Speed: 562.45 samples/sec	accuracy=0.000000	center_loss=5964553128206962046570910973952.000000
+2018-02-03 17:33:56,504 Node[0] Epoch[0] Batch [700]	Speed: 559.14 samples/sec	accuracy=0.000313	center_loss=1364015899410262544908140813484032.000000
+2018-02-03 17:33:59,378 Node[0] Epoch[0] Batch [750]	Speed: 556.91 samples/sec	accuracy=0.000313	center_loss=335558278802824467845946779845525504.000000
+2018-02-03 17:34:02,210 Node[0] Epoch[0] Batch [800]	Speed: 564.94 samples/sec	accuracy=0.000625	center_loss=inf
+2018-02-03 17:34:05,054 Node[0] Epoch[0] Batch [850]	Speed: 562.60 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:07,843 Node[0] Epoch[0] Batch [900]	Speed: 573.84 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:10,686 Node[0] Epoch[0] Batch [950]	Speed: 562.87 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:13,497 Node[0] Epoch[0] Batch [1000]	Speed: 569.14 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:16,311 Node[0] Epoch[0] Batch [1050]	Speed: 568.62 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:19,149 Node[0] Epoch[0] Batch [1100]	Speed: 563.89 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:21,997 Node[0] Epoch[0] Batch [1150]	Speed: 561.88 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:24,820 Node[0] Epoch[0] Batch [1200]	Speed: 566.71 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:27,638 Node[0] Epoch[0] Batch [1250]	Speed: 567.91 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:30,430 Node[0] Epoch[0] Batch [1300]	Speed: 573.13 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:33,224 Node[0] Epoch[0] Batch [1350]	Speed: 572.72 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:36,036 Node[0] Epoch[0] Batch [1400]	Speed: 569.03 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:38,852 Node[0] Epoch[0] Batch [1450]	Speed: 568.16 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:41,681 Node[0] Epoch[0] Batch [1500]	Speed: 565.68 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:44,519 Node[0] Epoch[0] Batch [1550]	Speed: 563.74 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:47,334 Node[0] Epoch[0] Batch [1600]	Speed: 568.43 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:50,158 Node[0] Epoch[0] Batch [1650]	Speed: 566.74 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:52,966 Node[0] Epoch[0] Batch [1700]	Speed: 569.72 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:55,772 Node[0] Epoch[0] Batch [1750]	Speed: 570.33 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:34:58,613 Node[0] Epoch[0] Batch [1800]	Speed: 563.25 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:01,431 Node[0] Epoch[0] Batch [1850]	Speed: 567.80 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:04,243 Node[0] Epoch[0] Batch [1900]	Speed: 568.99 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:07,071 Node[0] Epoch[0] Batch [1950]	Speed: 565.84 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:09,897 Node[0] Epoch[0] Batch [2000]	Speed: 566.17 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:12,740 Node[0] Epoch[0] Batch [2050]	Speed: 563.01 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:15,586 Node[0] Epoch[0] Batch [2100]	Speed: 562.21 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:18,378 Node[0] Epoch[0] Batch [2150]	Speed: 573.11 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:21,209 Node[0] Epoch[0] Batch [2200]	Speed: 565.25 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:24,043 Node[0] Epoch[0] Batch [2250]	Speed: 564.60 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:26,870 Node[0] Epoch[0] Batch [2300]	Speed: 565.91 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:29,679 Node[0] Epoch[0] Batch [2350]	Speed: 569.66 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:32,493 Node[0] Epoch[0] Batch [2400]	Speed: 568.69 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:35,334 Node[0] Epoch[0] Batch [2450]	Speed: 563.19 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:38,152 Node[0] Epoch[0] Batch [2500]	Speed: 567.91 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:40,978 Node[0] Epoch[0] Batch [2550]	Speed: 566.11 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:43,838 Node[0] Epoch[0] Batch [2600]	Speed: 559.61 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:46,658 Node[0] Epoch[0] Batch [2650]	Speed: 567.28 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:49,473 Node[0] Epoch[0] Batch [2700]	Speed: 568.49 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:52,293 Node[0] Epoch[0] Batch [2750]	Speed: 567.53 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:55,086 Node[0] Epoch[0] Batch [2800]	Speed: 572.86 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:35:57,911 Node[0] Epoch[0] Batch [2850]	Speed: 566.41 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:00,746 Node[0] Epoch[0] Batch [2900]	Speed: 564.31 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:03,571 Node[0] Epoch[0] Batch [2950]	Speed: 566.46 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:06,396 Node[0] Epoch[0] Batch [3000]	Speed: 566.46 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:09,257 Node[0] Epoch[0] Batch [3050]	Speed: 559.27 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:12,097 Node[0] Epoch[0] Batch [3100]	Speed: 563.50 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:14,904 Node[0] Epoch[0] Batch [3150]	Speed: 570.04 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:17,772 Node[0] Epoch[0] Batch [3200]	Speed: 557.96 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:20,582 Node[0] Epoch[0] Batch [3250]	Speed: 569.44 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:23,414 Node[0] Epoch[0] Batch [3300]	Speed: 564.95 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:26,224 Node[0] Epoch[0] Batch [3350]	Speed: 569.40 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:29,050 Node[0] Epoch[0] Batch [3400]	Speed: 566.29 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:31,866 Node[0] Epoch[0] Batch [3450]	Speed: 568.18 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:34,692 Node[0] Epoch[0] Batch [3500]	Speed: 566.21 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:37,510 Node[0] Epoch[0] Batch [3550]	Speed: 567.85 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:40,363 Node[0] Epoch[0] Batch [3600]	Speed: 560.81 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:43,198 Node[0] Epoch[0] Batch [3650]	Speed: 564.51 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:46,035 Node[0] Epoch[0] Batch [3700]	Speed: 564.00 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:48,849 Node[0] Epoch[0] Batch [3750]	Speed: 568.68 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:51,661 Node[0] Epoch[0] Batch [3800]	Speed: 568.94 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:54,489 Node[0] Epoch[0] Batch [3850]	Speed: 565.87 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:36:57,311 Node[0] Epoch[0] Batch [3900]	Speed: 567.13 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:37:00,115 Node[0] Epoch[0] Batch [3950]	Speed: 570.51 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:37:02,953 Node[0] Epoch[0] Batch [4000]	Speed: 563.95 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:37:05,750 Node[0] Epoch[0] Batch [4050]	Speed: 571.94 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:37:08,576 Node[0] Epoch[0] Batch [4100]	Speed: 566.30 samples/sec	accuracy=0.000000	center_loss=nan
+2018-02-03 17:37:11,421 Node[0] Epoch[0] Batch [4150]	Speed: 562.38 samples/sec	accuracy=0.000000	center_loss=nan

@@ -23,7 +23,7 @@ parser.add_argument('--start-epoch', type=int,
                     help="load the model on an epoch using the model-prefix")
 parser.add_argument('--kv-store', type=str, default='local',
                     help='the kvstore type')
-parser.add_argument('--log_file', type=str, default='training_vgg19cl_log.txt',
+parser.add_argument('--log_file', type=str, default='training_vgg19cl_log.log',
                     help='log file')
 parser.add_argument('--log_dir', type=str, default='.',
                     help='log dir')

@@ -56,7 +56,7 @@ class custom_mnist_iter(mx.io.DataIter):
 def mnist_iterator(batch_size, input_shape):
 	#"""return train and val iterators for mnist"""
 	#batchSize = batch_size
-	batchSize = 32
+	batchSize = 64
 	means = json.loads(open(config.DATASET_MEAN).read())
 	
 	# construct the training image iterator
