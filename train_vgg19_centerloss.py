@@ -59,7 +59,7 @@ logging.basicConfig(level=logging.DEBUG,
 
 # determine the batch and load the mean pixel values
 #batchSize = config.BATCH_SIZE * config.NUM_DEVICES
-batchSize = 64
+batchSize = 32
 means = json.loads(open(config.DATASET_MEAN).read())
 
 # construct the training image iterator
