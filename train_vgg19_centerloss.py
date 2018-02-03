@@ -3,6 +3,7 @@
 
 # import the necessary packages
 from config import vggface2_config as config
+from data import mnist_iterator
 from neuralnetwork.nn.mxconv import MxVGGNetCl
 from neuralnetwork.nn.mxconv import MxVGGNet
 from vggface2prepare import VGGFace2Prepare
@@ -19,8 +20,7 @@ class custom_mnist_iter(mx.io.DataIter):
 	def __init__(self, mnist_iter):
 		super(custom_mnist_iter,self).__init__()
 		self.data_iter = mnist_iter
-		#self.batch_size = self.data_iter.batch_size
-		self.batch_size = 64
+		self.batch_size = self.data_iter.batch_size
 
 	@property
 	def provide_data(self):
@@ -89,8 +89,9 @@ valIter = mx.io.ImageRecordIter(
 	mean_b=means["B"])
 	
 
-trainIterCustom = custom_mnist_iter(trainIter)
-valIterCustom = custom_mnist_iter(valIter)
+#trainIterCustom = custom_mnist_iter(trainIter)
+#valIterCustom = custom_mnist_iter(valIter)
+train, val = mnist_iterator(batch_size=64, input_shape=data_shape)
 
 # initialize the optimizer
 opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0001,
@@ -124,7 +125,7 @@ init_methods = [ mx.init.Normal(sigma=0.001), mx.init.Xavier()]
 
 # compile the model
 model = mx.model.FeedForward(
-	ctx=[mx.gpu(0)],
+	ctx=[mx.gpu(0), mx.gpu(1)],
 	symbol=model,
 	initializer=mx.init.Mixed(init_patterns, init_methods),
 	arg_params=argParams,
@@ -144,8 +145,8 @@ metrics = [Accuracy(), mx.metric.CrossEntropy(), CenterLossMetric()]
 # train the network
 print("[INFO] training network...")
 model.fit(
-	X=trainIterCustom,
-	eval_data=valIterCustom,
+	X=train,
+	eval_data=val,
 	eval_metric=metrics,
 	batch_end_callback=batchEndCBs,
 	epoch_end_callback=epochEndCBs)
