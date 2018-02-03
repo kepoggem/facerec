@@ -121,7 +121,7 @@ class MxVGGNetCl:
 		fc3 = mx.sym.FullyConnected(data=bn7_1, num_hidden=classes, name="fc3")
 		softmax = mx.sym.SoftmaxOutput(data=fc3, label=softmax_label, name="softmax")
 		
-		center_loss_ = mx.symbol.Custom(data=bn7_1, label=center_label, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
+		center_loss_ = mx.symbol.Custom(data=fc3, label=center_label, name='center_loss_', op_type='centerloss', num_class=classes, alpha=0.5, scale=1.0, batchsize=64)
 		center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
 		
 		#return softmax
