@@ -45,8 +45,8 @@ class CenterLoss(mx.operator.CustomOp):
 			raise ValueError('dim for input_data shoudl be 2 for CenterLoss')
 	
 		self.alpha = alpha
-		#self.batch_size = shapes[0][0]
-		self.batch_size = 64
+		self.batch_size = shapes[0][0]
+		#self.batch_size = 64
 		self.num_class = num_class
 		self.scale = scale
 	
