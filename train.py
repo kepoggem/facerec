@@ -157,14 +157,14 @@ def get_symbol(batchsize=32):
 
 	# softmax classifier
 	
-	embedding = mx.symbol.FullyConnected(data=do7, num_hidden=2, name='embedding')
+	#embedding = mx.symbol.FullyConnected(data=do7, num_hidden=2, name='embedding')
 	
 	# second fullc
-	fc3 = mx.symbol.FullyConnected(data=embedding, num_hidden=config.NUM_CLASSES, name='fc3')
+	fc3 = mx.symbol.FullyConnected(data=do7, num_hidden=config.NUM_CLASSES, name='fc3')
 	
 	ce_loss = mx.symbol.SoftmaxOutput(data=fc3, label=softmax_label, name='softmax')
 	
-	center_loss_ = mx.symbol.Custom(data=embedding, label=center_label, name='center_loss_', op_type='centerloss', num_class=config.NUM_CLASSES, alpha=0.5, scale=0.01, batchsize=batchsize)
+	center_loss_ = mx.symbol.Custom(data=fc3, label=center_label, name='center_loss_', op_type='centerloss', num_class=config.NUM_CLASSES, alpha=0.5, scale=0.01, batchsize=batchsize)
 	center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
 	mlp = mx.symbol.Group([ce_loss, center_loss])
 	#mlp = ce_loss + center_loss
