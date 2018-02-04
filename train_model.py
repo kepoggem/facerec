@@ -49,7 +49,7 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
         assert prefix is not None
         checkpointsPath = os.path.sep.join([args.checkpoints, args.prefix])
         #tmp = mx.model.FeedForward.load(checkpointsPath, args.start_epoch)
-        tmp = mx.model.FeedForward.load('/home/kepoggem/dcnn/datasets/vggface2/checkpoints/vgg19cl_pretrained_checkpoints', args.start_epoch)
+        tmp = mx.model.FeedForward.load('/home/kepoggem/dcnn/datasets/vggface2/checkpoints/vgg19cl_pretrained_checkpoints/vgg19', args.start_epoch)
         
         # only add those with the same shape
         arg_dict, aux_dict = get_model_dict( network, data_shape )
