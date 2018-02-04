@@ -136,7 +136,7 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     #    **model_args)
     argParams = None
     auxParams = None
-    opt = mx.optimizer.SGD(learning_rate=1e-1, momentum=0.9, wd=0.0005, rescale_grad=1.0 / 64)
+    opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0005, rescale_grad=1.0 / 64)
     
     model = mx.model.FeedForward(
     ctx=[mx.gpu(0), mx.gpu(1)],
@@ -156,8 +156,8 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
 
     # custom metric
     eval_metrics = mx.metric.CompositeEvalMetric()
-    eval_metrics.add(Accuracy())
-    #eval_metrics.add(mx.metric.Accuracy())
+    #eval_metrics.add(Accuracy())
+    eval_metrics.add(mx.metric.Accuracy())
     eval_metrics.add(CenterLossMetric())
     
     model.fit(
