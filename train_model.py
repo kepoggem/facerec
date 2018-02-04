@@ -48,8 +48,8 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     if args.start_epoch is not None:
         assert prefix is not None
         checkpointsPath = os.path.sep.join([args.checkpoints, args.prefix])
-        #tmp = mx.model.FeedForward.load(checkpointsPath, args.start_epoch)
-        tmp = mx.model.FeedForward.load('/home/kepoggem/dcnn/datasets/vggface2/checkpoints/vgg19cl_pretrained_checkpoints/vgg19', args.start_epoch)
+        tmp = mx.model.FeedForward.load(checkpointsPath, args.start_epoch)
+        #tmp = mx.model.FeedForward.load('/home/kepoggem/dcnn/datasets/vggface2/checkpoints/vgg19cl_pretrained_checkpoints/vgg19', args.start_epoch)
         
         # only add those with the same shape
         arg_dict, aux_dict = get_model_dict( network, data_shape )
@@ -137,7 +137,7 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     #    **model_args)
     argParams = None
     auxParams = None
-    opt = mx.optimizer.SGD(learning_rate=1e-2, momentum=0.9, wd=0.0005, rescale_grad=1.0 / 64)
+    opt = mx.optimizer.SGD(learning_rate=1e-3, momentum=0.9, wd=0.0005, rescale_grad=1.0 / 64)
     
     model = mx.model.FeedForward(
     ctx=[mx.gpu(0), mx.gpu(1)],
