@@ -37,6 +37,36 @@ def visual_feature_space(features,labels, num_classes, name_dict):
     #plt.show()
     plt.savefig('centerloss.png')
     return f, ax, sc, txts
+    
+    
+def plot_features(features, labels, num_classes, fpath='features.png'):
+    name_dict = dict()
+    for i in range(num_classes):
+        name_dict[i] = str(i)
+
+    f = plt.figure(figsize=(16, 12))
+
+    palette = np.array(sns.color_palette("hls", num_classes))
+
+    ax = plt.subplot(aspect='equal')
+    sc = ax.scatter(features[:, 0], features[:, 1], lw=0, s=40,
+                    c=palette[labels.astype(np.int)])
+    ax.axis('off')
+    ax.axis('tight')
+
+    # We add the labels for each digit.
+    txts = []
+    for i in range(num_classes):
+        # Position of each label.
+        xtext, ytext = np.median(features[labels == i, :], axis=0)
+        txt = ax.text(xtext, ytext, name_dict[i])
+        txt.set_path_effects([
+            PathEffects.Stroke(linewidth=5, foreground="w"),
+            PathEffects.Normal()])
+        txts.append(txt)
+
+    f.savefig(fpath)
+    plt.close()
 
 def main():
     # load model, get embedding layer
@@ -59,18 +89,19 @@ def main():
         embeds.append( preds )
         labels.append( i.label[0].asnumpy())
 
-    embeds = np.vstack(embeds)
-    labels = np.hstack(labels)
+    #embeds = np.vstack(embeds)
+    #labels = np.hstack(labels)
 
     print('embeds shape is ', embeds.shape)
     print ('labels shape is ', labels.shape)
 
     # prepare dict for display
-    namedict = dict()
-    for i in range(10):
-        namedict[i]=str(i)
+    #namedict = dict()
+    #for i in range(10):
+    #    namedict[i]=str(i)
 
-    visual_feature_space(embeds, labels, config.NUM_CLASSES, namedict)
+    #visual_feature_space(embeds, labels, config.NUM_CLASSES, namedict)
+    plot_features(embeds, labels, num_classes=10, fpath='features.png')
 
 if __name__ == "__main__":
     main()
