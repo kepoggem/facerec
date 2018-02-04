@@ -144,8 +144,8 @@ def fit(args, network, data_loader, data_shape, batch_end_callback=None, pattern
     symbol=network,
     #initializer=mx.init.Mixed(init_patterns, init_methods),
     initializer=mx.initializer.Xavier(),
-    arg_params=argParams,
-    aux_params=auxParams,
+    #arg_params=argParams,
+    #aux_params=auxParams,
     optimizer=opt,
     num_epoch=110,
     **model_args)
