@@ -114,7 +114,7 @@ print("[INFO] loading pre-trained model...")
 
 # construct the model
 #model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
-model = mx.mod.Module(
+#model = mx.mod.Module(
     context=[mx.gpu(0)],
     symbol=network)
     #initializer=mx.init.Mixed(init_patterns, init_methods),
@@ -125,9 +125,11 @@ model = mx.mod.Module(
     #optimizer=opt,
     #num_epoch=110,
     #**model_args)
-model.bind(data_shapes=testIter.provide_data, label_shapes=testIter.provide_label)
+#model.bind(data_shapes=testIter.provide_data, label_shapes=testIter.provide_label)
 #model.set_params(argParams, auxParams)
-model.set_params(**model_args)
+#model.set_params(**model_args)
+
+model = mx.model.FeedForward(ctx=[mx.gpu(0), mx.gpu(1)], symbol=embedding_layer, **model_args)
 
 # initialize the list of predictions and targets
 print("[INFO] evaluating model...")
@@ -135,11 +137,14 @@ predictions = []
 targets = []
 
 # loop over the predictions in batches
-for (preds, _, batch) in model.iter_predict(testIter):
+#for (preds, _, batch) in model.iter_predict(testIter):
+for i in testIter:
 	# convert the batch of predictions and labels to NumPy
 	# arrays
-	preds = preds[0].asnumpy()
-	labels = batch.label[0].asnumpy().astype("int")
+	preds = model.predict(i.data[0])
+	#preds = preds[0].asnumpy()
+	#labels = batch.label[0].asnumpy().astype("int")
+	labels.append( i.label[0].asnumpy())
 
 	# update the predictions and targets lists, respectively
 	predictions.extend(preds)
