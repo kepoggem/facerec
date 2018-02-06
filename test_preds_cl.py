@@ -1,5 +1,5 @@
 # USAGE
-# python test_preds.py --checkpoints ~/dcnn/datasets/vggface2/checkpoints/ --prefix resnet50 --epoch 20
+# python test_preds.py --checkpoints ~/dcnn/datasets/vggface2/checkpoints/ --prefix resnet50 --start-epoch 20
 
 # import the necessary packages
 from config import vggface2_config as config
@@ -18,7 +18,7 @@ ap.add_argument("-c", "--checkpoints", required=True,
 	help="path to output checkpoint directory")
 ap.add_argument("-p", "--prefix", required=True,
 	help="name of model prefix")
-ap.add_argument("-e", "--epoch", type=int, required=True,
+ap.add_argument("-e", "--start-epoch", type=int, required=True,
 	help="epoch # to load")
 #args = vars(ap.parse_args())
 args = ap.parse_args()
