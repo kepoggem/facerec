@@ -39,7 +39,7 @@ def get_model_dict(network, data_shape):
     return arg_dict, aux_dict
 
 # load model
-network = get_symbol(64)
+network = get_symbol(32)
 data_shape = (3,227,227)
 prefix = args.prefix
 model_args = {}
@@ -129,7 +129,7 @@ print("[INFO] loading pre-trained model...")
 #model.set_params(argParams, auxParams)
 #model.set_params(**model_args)
 
-model = mx.model.FeedForward(ctx=[mx.gpu(0), mx.gpu(1)], symbol=embedding_layer, **model_args)
+model = mx.model.FeedForward(ctx=[mx.gpu(0), mx.gpu(1)], symbol=network, **model_args)
 
 # initialize the list of predictions and targets
 print("[INFO] evaluating model...")
