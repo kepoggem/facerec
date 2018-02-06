@@ -6,6 +6,7 @@ from config import vggface2_config as config
 from neuralnetwork.utils.ranked import rank5_accuracy
 from neuralnetwork.utils.mxcenter_loss import *
 from data import *
+from train import *
 import mxnet as mx
 import argparse
 import pickle
@@ -38,6 +39,8 @@ def get_model_dict(network, data_shape):
     return arg_dict, aux_dict
 
 # load model
+network = get_symbol(64)
+data_shape = (3,227,227)
 prefix = args.prefix
 model_args = {}
 if args.start_epoch is not None:
