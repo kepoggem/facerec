@@ -116,7 +116,7 @@ print("[INFO] loading pre-trained model...")
 #model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
 model = mx.mod.Module(
     context=[mx.gpu(0)],
-    symbol=network,
+    symbol=network)
     #initializer=mx.init.Mixed(init_patterns, init_methods),
     #initializer=mx.initializer.Xavier(),
     #initializer=mx.initializer.MSRAPrelu(),
@@ -124,7 +124,7 @@ model = mx.mod.Module(
     #aux_params=auxParams,
     #optimizer=opt,
     #num_epoch=110,
-    **model_args)
+    #**model_args)
 model.bind(data_shapes=testIter.provide_data, label_shapes=testIter.provide_label)
 #model.set_params(argParams, auxParams)
 model.set_params(**model_args)
