@@ -20,11 +20,12 @@ ap.add_argument("-p", "--prefix", required=True,
 	help="name of model prefix")
 ap.add_argument("-e", "--epoch", type=int, required=True,
 	help="epoch # to load")
-args = vars(ap.parse_args())
+#args = vars(ap.parse_args())
+args = ap.parse_args()
 
 
 # load model
-prefix = args["prefix"]
+prefix = args.prefix
 model_args = {}
 if args.start_epoch is not None:
     assert prefix is not None
