@@ -4,6 +4,7 @@
 # import the necessary packages
 from config import vggface2_config as config
 from neuralnetwork.utils.ranked import rank5_accuracy
+from neuralnetwork.utils.mxcenter_loss import *
 import mxnet as mx
 import argparse
 import pickle
