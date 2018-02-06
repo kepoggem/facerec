@@ -85,8 +85,8 @@ if args.start_epoch is not None:
             print('catching aux: {} from pretrained model'.format(k))
 
     model_args = {'arg_params' : valid_arg,
-                  'aux_params' : valid_aux,
-                  'begin_epoch' : args.start_epoch}
+                  'aux_params' : valid_aux}
+                  #'begin_epoch' : args.start_epoch}
 
 # load the label encoder
 #le = pickle.loads(open(config.LABEL_ENCODER_PATH, "rb").read())
