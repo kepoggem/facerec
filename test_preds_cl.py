@@ -115,8 +115,8 @@ print("[INFO] loading pre-trained model...")
 # construct the model
 #model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
 #model = mx.mod.Module(
-    context=[mx.gpu(0)],
-    symbol=network)
+    #context=[mx.gpu(0)],
+    #symbol=network)
     #initializer=mx.init.Mixed(init_patterns, init_methods),
     #initializer=mx.initializer.Xavier(),
     #initializer=mx.initializer.MSRAPrelu(),
