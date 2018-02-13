@@ -74,7 +74,7 @@ def mnist_iterator(batch_size, input_shape):
 	
 	# construct the validation image iterator
 	val_dataiter = mx.io.ImageRecordIter(
-		path_imgrec=config.VAL_MX_REC,
+		path_imgrec=config.TEST_MX_REC,
 		data_shape=(3, 227, 227),
 		batch_size=batchSize,
 		mean_r=means["R"],

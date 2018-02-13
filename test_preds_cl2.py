@@ -43,10 +43,10 @@ checkpointsPath = os.path.sep.join([args["checkpoints"],
 (symbol, argParams, auxParams) = mx.model.load_checkpoint(
 	checkpointsPath, args["epoch"])
 
+train, val = mnist_iterator(batch_size=args.batch_size, input_shape=data_shape)
 # construct the model
 model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
-model.bind(data_shapes=testIter.provide_data,
-	label_shapes=testIter.provide_label)
+model.bind(data_shapes=val.provide_data, label_shapes=val.provide_label)
 model.set_params(argParams, auxParams)
 
 # initialize the list of predictions and targets
