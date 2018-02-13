@@ -81,9 +81,9 @@ for k, v in aux_dict.items():
         valid_aux[k] = symbol.aux_params[k]
         print('catching aux: {} from pretrained model'.format(k))
 
-model_args = {'arg_params' : valid_arg,
-              'aux_params' : valid_aux,
-              'begin_epoch' : args.start_epoch}
+#model_args = {'arg_params' : valid_arg,
+#              'aux_params' : valid_aux,
+#              'begin_epoch' : args.start_epoch}
 
 train, val = mnist_iterator(batch_size=32, input_shape=(3,227,227))
 # construct the model
