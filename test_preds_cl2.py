@@ -45,9 +45,9 @@ checkpointsPath = os.path.sep.join([args["checkpoints"],
 
 # construct the model
 model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
-model.bind(data_shapes=testIter.provide_data,
+#model.bind(data_shapes=testIter.provide_data,
 	label_shapes=testIter.provide_label)
-model.set_params(argParams, auxParams)
+#model.set_params(argParams, auxParams)
 
 # initialize the list of predictions and targets
 print("[INFO] evaluating model...")
