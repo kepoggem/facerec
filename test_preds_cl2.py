@@ -36,19 +36,74 @@ testIter = mx.io.ImageRecordIter(
 	mean_r=faceMeans["R"],
 	mean_g=faceMeans["G"],
 	mean_b=faceMeans["B"])
+	
+def get_model_dict(network, data_shape):
+    '''
+        return the (name,shape) dict for both args and aux,
+        so that in the finetune process, new model will only load
+        those valid params
+    '''
+    arg_shapes, output_shapes, aux_shapes = network.infer_shape( data=(1,)+data_shape )
+    arg_names = network.list_arguments()
+    aux_names = network.list_auxiliary_states()
+
+    arg_dict = dict(zip(arg_names, arg_shapes))
+    aux_dict = dict(zip(aux_names, aux_shapes))
+    return arg_dict, aux_dict
+
+	
+## custom
+#net = get_symbol(batchsize)
 
 # load our pre-trained model
 print("[INFO] loading pre-trained model...")
-checkpointsPath = os.path.sep.join([args["checkpoints"],
-	args["prefix"]])
-(symbol, argParams, auxParams) = mx.model.load_checkpoint(
-	checkpointsPath, args["epoch"])
+checkpointsPath = os.path.sep.join([args["checkpoints"], args["prefix"]])
+(symbol, argParams, auxParams) = mx.model.load_checkpoint(checkpointsPath, args["epoch"])
+
+arg_dict, aux_dict = get_model_dict( symbol, (3,227,227) )
+valid_arg = dict()
+valid_aux = dict()
+
+# print all the parameters
+print('all params ', arg_dict)
+
+# for args 
+for k, v in arg_dict.items():
+    # skip those 'label'
+    if k == 'data' or k.endswith('label'):
+        continue
+
+    # skip those pretrain model dosen't have
+    if not k in tmp.arg_params.keys():
+        continue
+
+    if v == tmp.arg_params[k].shape:
+        valid_arg[k] = tmp.arg_params[k]
+        print('catching arg: {} from pretrained model'.format(k))
+# for aux 
+for k, v in aux_dict.items():
+    # skip these 'label'
+    if k == 'data' or k.endswith('label'):
+        continue
+    
+    # skip those pretrain model dosen't have
+    if not k in tmp.aux_params.keys():
+        continue
+
+    if v == tmp.aux_params[k].shape:
+        valid_aux[k] = tmp.aux_params[k]
+        print('catching aux: {} from pretrained model'.format(k))
+
+model_args = {'arg_params' : valid_arg,
+              'aux_params' : valid_aux,
+              'begin_epoch' : args.start_epoch}
 
 train, val = mnist_iterator(batch_size=32, input_shape=(3,227,227))
 # construct the model
 model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
 model.bind(data_shapes=val.provide_data, label_shapes=val.provide_label)
-model.set_params(argParams, auxParams, allow_missing=True)
+#model.set_params(argParams, auxParams, allow_missing=True)
+model.set_params(valid_arg, valid_aux, allow_missing=True)
 
 # initialize the list of predictions and targets
 print("[INFO] evaluating model...")
