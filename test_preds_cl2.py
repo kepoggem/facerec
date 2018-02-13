@@ -254,11 +254,12 @@ for i in val:
 	preds = model.iter_predict(i.data[0])
 	#preds = preds[0].asnumpy()
 	#labels = batch.label[0].asnumpy().astype("int")
-	labels.append( i.label[0].asnumpy())
+	#labels.append( i.label[0].asnumpy())
 
 	# update the predictions and targets lists, respectively
 	predictions.extend(preds)
-	targets.extend(labels)
+	#targets.extend(labels)
+	targets.extend(i.label[0].asnumpy())
 
 # compute the rank-1 and rank-5 accuracies
 (rank1, rank5) = rank5_accuracy(predictions, targets)
