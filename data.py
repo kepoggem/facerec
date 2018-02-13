@@ -76,7 +76,7 @@ def mnist_iterator(batch_size, input_shape):
 	val_dataiter = mx.io.ImageRecordIter(
 		path_imgrec=config.TEST_MX_REC,
 		data_shape=(3, 227, 227),
-		batch_size=batchSize,
+		batch_size=32,
 		mean_r=means["R"],
 		mean_g=means["G"],
 		mean_b=means["B"])
