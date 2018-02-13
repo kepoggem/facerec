@@ -8,7 +8,7 @@ from neuralnetwork.utils.mxcenter_loss import *
 import mxnet as mx
 from data import mnist_iterator
 from train import get_symbol
-import train_model 
+from train_model import get_model_dict
 import argparse
 import pickle
 import os
