@@ -223,7 +223,7 @@ model_args = {'arg_params' : valid_arg,
 train, val = mnist_iterator(batch_size=32, input_shape=(3,227,227))
 # construct the model
 #model = mx.model.FeedForward(ctx=[mx.gpu(0), mx.gpu(1)], symbol=network, **model_args)
-model = mx.mod.Module(symbol=network, context=[mx.gpu(0)])
+model = mx.mod.Module(symbol=network, context=[mx.gpu(0), mx.gpu(1)])
 model.bind(data_shapes=val.provide_data, label_shapes=val.provide_label)
 #model.set_params(argParams, auxParams, allow_missing=True)
 model.set_params(valid_arg, valid_aux, allow_missing=True)
@@ -251,7 +251,7 @@ targets = []
 for i in val:
 	# convert the batch of predictions and labels to NumPy
 	# arrays
-	preds = model.predict(i.data[0])
+	preds = model.iter_predict(i.data[0])
 	#preds = preds[0].asnumpy()
 	#labels = batch.label[0].asnumpy().astype("int")
 	labels.append( i.label[0].asnumpy())
