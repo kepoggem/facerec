@@ -7,7 +7,7 @@ from neuralnetwork.utils.ranked import rank5_accuracy
 from neuralnetwork.utils.mxcenter_loss import *
 import mxnet as mx
 from data import mnist_iterator
-import train
+from train import get_symbol
 import train_model 
 import argparse
 import pickle
