@@ -7,7 +7,8 @@ from neuralnetwork.utils.ranked import rank5_accuracy
 from neuralnetwork.utils.mxcenter_loss import *
 import mxnet as mx
 from data import mnist_iterator
-from train import *
+import train
+import train_model 
 import argparse
 import pickle
 import os
@@ -38,19 +39,6 @@ testIter = mx.io.ImageRecordIter(
 	mean_g=faceMeans["G"],
 	mean_b=faceMeans["B"])
 	
-def get_model_dict(network, data_shape):
-    '''
-        return the (name,shape) dict for both args and aux,
-        so that in the finetune process, new model will only load
-        those valid params
-    '''
-    arg_shapes, output_shapes, aux_shapes = network.infer_shape( data=(1,)+data_shape )
-    arg_names = network.list_arguments()
-    aux_names = network.list_auxiliary_states()
-
-    arg_dict = dict(zip(arg_names, arg_shapes))
-    aux_dict = dict(zip(aux_names, aux_shapes))
-    return arg_dict, aux_dict
 
 	
 ## custom
