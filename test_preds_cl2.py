@@ -216,16 +216,17 @@ for k, v in aux_dict.items():
         valid_aux[k] = symbol.aux_params[k]
         print('catching aux: {} from pretrained model'.format(k))
 
-#model_args = {'arg_params' : valid_arg,
-#              'aux_params' : valid_aux,
-#              'begin_epoch' : args.start_epoch}
+model_args = {'arg_params' : valid_arg,
+              'aux_params' : valid_aux,
+              'begin_epoch' : args["epoch"]}
 
 train, val = mnist_iterator(batch_size=32, input_shape=(3,227,227))
 # construct the model
-model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
-model.bind(data_shapes=val.provide_data, label_shapes=val.provide_label)
+model = mx.model.FeedForward(ctx=[mx.gpu(0), mx.gpu(1)], symbol=network, **model_args)
+#model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
+#model.bind(data_shapes=val.provide_data, label_shapes=val.provide_label)
 #model.set_params(argParams, auxParams, allow_missing=True)
-model.set_params(valid_arg, valid_aux, allow_missing=True)
+#model.set_params(valid_arg, valid_aux, allow_missing=True)
 
 # initialize the list of predictions and targets
 print("[INFO] evaluating model...")
