@@ -234,7 +234,7 @@ predictions = []
 targets = []
 
 # loop over the predictions in batches
-for (preds, _, batch) in model.iter_predict(testIter):
+for (preds, _, batch) in model.predict(val):
 	# convert the batch of predictions and labels to NumPy
 	# arrays
 	preds = preds[0].asnumpy()
