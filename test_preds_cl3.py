@@ -6,6 +6,8 @@ from config import vggface2_config as config
 from neuralnetwork.utils.ranked import rank5_accuracy
 from neuralnetwork.utils.mxcenter_loss import *
 import mxnet as mx
+from train_model import get_model_dict
+from data import mnist_iterator
 import argparse
 import pickle
 import os
