@@ -38,11 +38,9 @@ testIter = mx.io.ImageRecordIter(
 	mean_r=faceMeans["R"],
 	mean_g=faceMeans["G"],
 	mean_b=faceMeans["B"])
-	
 
-	
 ## custom
-network = get_symbol(batchsize)
+network = get_symbol(32)
 
 # load our pre-trained model
 print("[INFO] loading pre-trained model...")
