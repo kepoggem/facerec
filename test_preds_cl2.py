@@ -234,19 +234,31 @@ predictions = []
 targets = []
 
 # loop over the predictions in batches
-for (preds, _, batch) in model.iter_predict(val):
+#for (preds, _, batch) in model.iter_predict(val):
+#	# convert the batch of predictions and labels to NumPy
+#	# arrays
+#	preds = preds[0].asnumpy()
+#	labels = batch.label[0].asnumpy().astype("int")
+
+	# update the predictions and targets lists, respectively
+#	predictions.extend(preds)
+#	targets.extend(labels)
+
+# apply array slicing to the targets since mxnet will return the
+# next full batch size rather than the *actual* number of labels
+#targets = targets[:len(predictions)]
+
+for i in val:
 	# convert the batch of predictions and labels to NumPy
 	# arrays
-	preds = preds[0].asnumpy()
-	labels = batch.label[0].asnumpy().astype("int")
+	preds = model.predict(i.data[0])
+	#preds = preds[0].asnumpy()
+	#labels = batch.label[0].asnumpy().astype("int")
+	labels.append( i.label[0].asnumpy())
 
 	# update the predictions and targets lists, respectively
 	predictions.extend(preds)
 	targets.extend(labels)
-
-# apply array slicing to the targets since mxnet will return the
-# next full batch size rather than the *actual* number of labels
-targets = targets[:len(predictions)]
 
 # compute the rank-1 and rank-5 accuracies
 (rank1, rank5) = rank5_accuracy(predictions, targets)
