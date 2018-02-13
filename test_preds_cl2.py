@@ -7,6 +7,7 @@ from neuralnetwork.utils.ranked import rank5_accuracy
 from neuralnetwork.utils.mxcenter_loss import *
 import mxnet as mx
 from data import mnist_iterator
+from train import *
 import argparse
 import pickle
 import os
@@ -53,14 +54,14 @@ def get_model_dict(network, data_shape):
 
 	
 ## custom
-#net = get_symbol(batchsize)
+network = get_symbol(batchsize)
 
 # load our pre-trained model
 print("[INFO] loading pre-trained model...")
 checkpointsPath = os.path.sep.join([args["checkpoints"], args["prefix"]])
 (symbol, argParams, auxParams) = mx.model.load_checkpoint(checkpointsPath, args["epoch"])
 
-arg_dict, aux_dict = get_model_dict( symbol, (3,227,227) )
+arg_dict, aux_dict = get_model_dict( network, (3,227,227) )
 valid_arg = dict()
 valid_aux = dict()
 
@@ -74,11 +75,11 @@ for k, v in arg_dict.items():
         continue
 
     # skip those pretrain model dosen't have
-    if not k in tmp.arg_params.keys():
+    if not k in symbol.arg_params.keys():
         continue
 
-    if v == tmp.arg_params[k].shape:
-        valid_arg[k] = tmp.arg_params[k]
+    if v == symbol.arg_params[k].shape:
+        valid_arg[k] = symbol.arg_params[k]
         print('catching arg: {} from pretrained model'.format(k))
 # for aux 
 for k, v in aux_dict.items():
@@ -87,11 +88,11 @@ for k, v in aux_dict.items():
         continue
     
     # skip those pretrain model dosen't have
-    if not k in tmp.aux_params.keys():
+    if not k in symbol.aux_params.keys():
         continue
 
-    if v == tmp.aux_params[k].shape:
-        valid_aux[k] = tmp.aux_params[k]
+    if v == symbol.aux_params[k].shape:
+        valid_aux[k] = symbol.aux_params[k]
         print('catching aux: {} from pretrained model'.format(k))
 
 model_args = {'arg_params' : valid_arg,
