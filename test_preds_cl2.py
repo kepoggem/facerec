@@ -48,7 +48,7 @@ train, val = mnist_iterator(batch_size=32, input_shape=(3,227,227))
 # construct the model
 model = mx.mod.Module(symbol=symbol, context=[mx.gpu(0)])
 model.bind(data_shapes=val.provide_data, label_shapes=val.provide_label)
-model.set_params(argParams, auxParams)
+model.set_params(argParams, auxParams, allow_missing=True)
 
 # initialize the list of predictions and targets
 print("[INFO] evaluating model...")
