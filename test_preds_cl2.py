@@ -179,7 +179,8 @@ network = get_symbol(32)
 # load our pre-trained model
 print("[INFO] loading pre-trained model...")
 checkpointsPath = os.path.sep.join([args["checkpoints"], args["prefix"]])
-(symbol, argParams, auxParams) = mx.model.load_checkpoint(checkpointsPath, args["epoch"])
+#(symbol, argParams, auxParams) = mx.model.load_checkpoint(checkpointsPath, args["epoch"])
+symbol = mx.model.FeedForward.load(checkpointsPath, args["epoch"])
 
 arg_dict, aux_dict = get_model_dict( network, (3,227,227) )
 valid_arg = dict()
