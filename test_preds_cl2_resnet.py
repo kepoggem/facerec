@@ -5,9 +5,9 @@
 from config import vggface2_config as config
 from neuralnetwork.utils.ranked import rank5_accuracy
 from neuralnetwork.utils.mxcenter_loss import *
-import mxnet as mx
 from neuralnetwork.nn.mxconv import MxResNetCl
 from config import vggface2_config as config
+import mxnet as mx
 from data import mnist_iterator
 #from train import get_symbol
 from train_model import get_model_dict
@@ -26,7 +26,6 @@ def get_symbol(batchsize=32):
 	mlp = MxResNetCl.build(config.NUM_CLASSES, (3, 4, 6, 3), (64, 256, 512, 1024, 2048))
 		
 	return mlp
-
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
