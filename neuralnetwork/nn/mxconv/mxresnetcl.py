@@ -1,5 +1,6 @@
 # import the necessary packages
 import mxnet as mx
+from config import vggface2_config as config
 
 class MxResNetCl:
 	# uses "bottleneck" module with pre-activation (He et al. 2016)
@@ -95,7 +96,7 @@ class MxResNetCl:
 		fc1 = mx.sym.FullyConnected(data=flatten, num_hidden=classes)
 		ce_loss = mx.sym.SoftmaxOutput(data=fc1, name="softmax")
 		
-		center_loss_ = mx.symbol.Custom(data=fc1, label=center_label, name='center_loss_', op_type='centerloss', num_class=config.NUM_CLASSES, alpha=0.5, scale=1.0, batchsize=batchsize)
+		center_loss_ = mx.symbol.Custom(data=fc1, label=center_label, name='center_loss_', op_type='centerloss', num_class=config.NUM_CLASSES, alpha=0.5, scale=1.0, batchsize=32)
 		center_loss = mx.symbol.MakeLoss(name='center_loss', data=center_loss_)
 		mlp = mx.symbol.Group([ce_loss, center_loss])
 		#mlp = ce_loss + center_loss
