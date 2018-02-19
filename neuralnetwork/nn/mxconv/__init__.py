@@ -2,5 +2,5 @@
 from .mxvggnet import MxVGGNet
 from .mxresnet import MxResNet
 from .mxvggnet_centerloss import MxVGGNetCl
-from .mxresnet import MxResNetCl
+from .mxresnetcl import MxResNetCl
 
