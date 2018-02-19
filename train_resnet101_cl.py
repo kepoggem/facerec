@@ -16,7 +16,7 @@ parser.add_argument('--batch-size', type=int, default=32,
                     help='the batch size')
 parser.add_argument('--prefix', type=str,
                     help='the prefix of the model to load')
-parser.add_argument('--checkpoints', type=str,default='~/dcnn/datasets/vggface2/checkpoints/vgg19cl_checkpoint',
+parser.add_argument('--checkpoints', type=str,default='~/dcnn/datasets/vggface2/checkpoints/resnet101cl_checkpoint',
                     help='the prefix of the model to save')
 parser.add_argument('--num-epochs', type=int, default=20,
                     help='the number of training epochs')
@@ -24,7 +24,7 @@ parser.add_argument('--start-epoch', type=int,
                     help="load the model on an epoch using the model-prefix")
 parser.add_argument('--kv-store', type=str, default='local',
                     help='the kvstore type')
-parser.add_argument('--log_file', type=str, default='training_vgg19cl_log.log',
+parser.add_argument('--log_file', type=str, default='training_resnet101cl_log.log',
                     help='log file')
 parser.add_argument('--log_dir', type=str, default='.',
                     help='log dir')
@@ -58,11 +58,11 @@ def main():
 	if args.start_epoch is None:
 		epoch = 0
 		logging.basicConfig(level=logging.DEBUG,
-		filename="training_resnet50cl_{}.log".format(epoch),
+		filename="training_resnet101cl_{}.log".format(epoch),
 		filemode="w")
 	else:
 		logging.basicConfig(level=logging.DEBUG,
-		filename="training_resnet50cl_{}.log".format(args.start_epoch),
+		filename="training_resnet101cl_{}.log".format(args.start_epoch),
 		filemode="w")
 	
 	# define network structure

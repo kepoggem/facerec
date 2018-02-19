@@ -3,7 +3,7 @@ import mxnet as mx
 from config import vggface2_config as config
 
 class MxResNet101Cl:
-	# uses "bottleneck" module with pre-activation (He et al. 2016)
+	# uses "bottleneck" module with pre-LeakyReLU (He et al. 2016)
 	@staticmethod
 	def residual_module(data, K, stride, red=False, bnEps=2e-5,
 		bnMom=0.9):
@@ -14,7 +14,7 @@ class MxResNet101Cl:
 		# the first block of the ResNet module are 1x1 CONVs
 		bn1 = mx.sym.BatchNorm(data=data, fix_gamma=False,
 			eps=bnEps, momentum=bnMom)
-		act1 = mx.sym.Activation(data=bn1, act_type="prelu")
+		act1 = mx.sym.LeakyReLU(data=bn1, act_type="prelu")
 		conv1 = mx.sym.Convolution(data=act1, pad=(0, 0),
 			kernel=(1, 1), stride=(1, 1), num_filter=int(K * 0.25),
 			no_bias=True)
@@ -22,7 +22,7 @@ class MxResNet101Cl:
 		# the second block of the ResNet module are 3x3 CONVs
 		bn2 = mx.sym.BatchNorm(data=conv1, fix_gamma=False,
 			eps=bnEps, momentum=bnMom)
-		act2 = mx.sym.Activation(data=bn2, act_type="prelu")
+		act2 = mx.sym.LeakyReLU(data=bn2, act_type="prelu")
 		conv2 = mx.sym.Convolution(data=act2, pad=(1, 1),
 			kernel=(3, 3), stride=stride, num_filter=int(K * 0.25),
 			no_bias=True)
@@ -31,7 +31,7 @@ class MxResNet101Cl:
 		# CONVs
 		bn3 = mx.sym.BatchNorm(data=conv2, fix_gamma=False,
 			eps=bnEps, momentum=bnMom)
-		act3 = mx.sym.Activation(data=bn3, act_type="prelu")
+		act3 = mx.sym.LeakyReLU(data=bn3, act_type="prelu")
 		conv3 = mx.sym.Convolution(data=act3, pad=(0, 0),
 			kernel=(1, 1), stride=(1, 1), num_filter=K, no_bias=True)
 
@@ -65,7 +65,7 @@ class MxResNet101Cl:
 			no_bias=True)
 		bn1_2 = mx.sym.BatchNorm(data=conv1_1, fix_gamma=False,
 			eps=bnEps, momentum=bnMom)
-		act1_2 = mx.sym.Activation(data=bn1_2, act_type="prelu")
+		act1_2 = mx.sym.LeakyReLU(data=bn1_2, act_type="prelu")
 		pool1 = mx.sym.Pooling(data=act1_2, pool_type="max",
 			pad=(1, 1), kernel=(3, 3), stride=(2, 2))
 		body = pool1
@@ -87,7 +87,7 @@ class MxResNet101Cl:
 		# apply BN => ACT => POOL
 		bn2_1 = mx.sym.BatchNorm(data=body, fix_gamma=False,
 			eps=bnEps, momentum=bnMom)
-		act2_1 = mx.sym.Activation(data=bn2_1, act_type="prelu")
+		act2_1 = mx.sym.LeakyReLU(data=bn2_1, act_type="prelu")
 		pool2 = mx.sym.Pooling(data=act2_1, pool_type="avg",
 			global_pool=True, kernel=(7, 7))
 
