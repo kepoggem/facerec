@@ -71,13 +71,13 @@ class MxResNetCl:
 			# initialize the stride, then apply a residual module
 			# used to reduce the spatial size of the input volume
 			stride = (1, 1) if i == 0 else (2, 2)
-			body = MxResNet.residual_module(body, filters[i + 1],
+			body = MxResNetCl.residual_module(body, filters[i + 1],
 				stride, red=True, bnEps=bnEps, bnMom=bnMom)
 
 			# loop over the number of layers in the stage
 			for j in range(0, stages[i] - 1):
 				# apply a ResNet module
-				body = MxResNet.residual_module(body, filters[i + 1],
+				body = MxResNetCl.residual_module(body, filters[i + 1],
 					(1, 1), bnEps=bnEps, bnMom=bnMom)
 
 		# apply BN => ACT => POOL
