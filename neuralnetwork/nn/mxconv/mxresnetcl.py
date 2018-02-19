@@ -51,6 +51,9 @@ class MxResNetCl:
 	def build(classes, stages, filters, bnEps=2e-5, bnMom=0.9):
 		# data input
 		data = mx.sym.Variable("data")
+		
+		softmax_label = mx.symbol.Variable('softmax_label')
+		center_label = mx.symbol.Variable('center_label')
 
 		# Block #1: BN => CONV => ACT => POOL, then initialize the
 		# "body" of the network
