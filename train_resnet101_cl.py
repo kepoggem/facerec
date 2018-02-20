@@ -66,6 +66,7 @@ def main():
 		filemode="w")
 	
 	# define network structure
+	batchsize = 64
 	net = get_symbol(batchsize)
 	
 	# load data
