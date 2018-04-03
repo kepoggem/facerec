@@ -24,11 +24,13 @@ print("[INFO] loading image paths...")
 vfp = VGGFace2Prepare(config)
 (trainPaths, trainLabels) = vfp.buildTrainingSet()
 
+(testPaths, testLabels) = vfp.buildTestingSet()
+
 # now that we have the total number of images in the dataset that
 # can be used for training, compute the number of images that
 # should be used for validation
 numVal = int((len(trainPaths) * config.NUM_TRAIN_IMAGES) * config.NUM_VAL_IMAGES)
-numTest = int((len(trainPaths) * config.NUM_TRAIN_IMAGES) * config.NUM_TEST_IMAGES)
+numTest = int(len(testPaths))
 
 # our class labels are represented as strings so we need to encode
 # them
@@ -47,9 +49,9 @@ split = train_test_split(trainPaths, trainLabels,
 # perform stratified sampling from the training set to construct a
 # a testing set
 print("[INFO] constructing testing data...")
-split = train_test_split(trainPaths, trainLabels, test_size=numTest,
-	stratify=trainLabels)
-(trainPaths, testPaths, trainLabels, testLabels) = split
+#split = train_test_split(trainPaths, trainLabels, test_size=numTest,
+#	stratify=trainLabels)
+#(trainPaths, testPaths, trainLabels, testLabels) = split
 
 # construct a list pairing the training, validation, and testing
 # image paths along with their corresponding labels and output list
