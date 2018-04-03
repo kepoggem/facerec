@@ -22,8 +22,8 @@ logs = [
 	(1, "training_resnet101_0.log"),
 	(5, "training_resnet101_1.log"),
 	(9, "training_resnet101_5.log"),
-	(17, "training_resnet101_9.log"),
-	(20, "training_resnet101_17.log")
+	(13, "training_resnet101_9.log"),
+        (15, "training_resnet101_13.log")
 ]
 
 # initialize the list of train rank-1 and rank-5 accuracies, along

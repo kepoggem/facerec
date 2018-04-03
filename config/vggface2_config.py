@@ -32,10 +32,10 @@ TEST_LIST = path.sep.join([DEVKIT_PATH, "test_list.txt"])
 
 # since we do not have access to the testing data we need to
 # take a number of images from the training data and use it instead
-#NUM_CLASSES = 1000
+NUM_CLASSES = 9131
 #NUM_CLASSES = 1057
 #NUM_CLASSES = 1168
-NUM_CLASSES = 1266
+#NUM_CLASSES = 1266
 NUM_TRAIN_IMAGES = 0.75
 NUM_VAL_IMAGES = 0.20
 NUM_TEST_IMAGES = 0.05

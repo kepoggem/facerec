@@ -19,7 +19,11 @@ args = vars(ap.parse_args())
 
 # define the paths to the training logs
 logs = [
-	(13, "training_resnet50_0.log")
+	(3, "training_0.log"),
+	(6, "training_3.log"),
+	(13, "training_6.log"),
+	(14, "training_13.log"),
+	(18, "training_14.log")
 ]
 
 # initialize the list of train rank-1 and rank-5 accuracies, along
@@ -120,7 +124,7 @@ ax2 = ax1.twinx()   # mirror them
 ta = ax2.plot(np.arange(0, len(trainRank1)), trainRank1, 'tab:purple', label="train_acc")
 va = ax2.plot(np.arange(0, len(valRank1)), valRank1, 'tab:gray', label="val_acc")
 
-tsa = ax2.axhline(y=0.9300, color='g', linestyle=':', label="test_acc")
+tsa = ax2.axhline(y=0.8507, color='g', linestyle=':', label="test_acc")
 
 lns = tl+vl+ta+va
 labs = [l.get_label() for l in lns]

@@ -19,7 +19,11 @@ args = vars(ap.parse_args())
 
 # define the paths to the training logs
 logs = [
-	(13, "training_resnet50_0.log")
+	(33, "training_resnet101cl_0.log"),
+	(48, "training_resnet101cl_33.log"),
+	(56, "training_resnet101cl_48.log"),
+	(61, "training_resnet101cl_56.log"),
+	(62, "training_resnet101cl_61.log")
 ]
 
 # initialize the list of train rank-1 and rank-5 accuracies, along
@@ -50,7 +54,7 @@ for (i, (endEpoch, p)) in enumerate(logs):
 		rank1 = re.findall(s, rows)[-2]
 		#s = r'Epoch\[' + str(e) + '\].*top_k_accuracy_5=([0]*\.?[0-9]+)'
 		#rank5 = re.findall(s, rows)[-2]
-		s = r'Epoch\[' + str(e) + '\].*cross-entropy=([0-9]*\.?[0-9]+)'
+		s = r'Epoch\[' + str(e) + '\].*center_loss=([0-9]*\.?[0-9]+)'
 		loss = re.findall(s, rows)[-2]
 
 		# update the batch training lists
@@ -62,7 +66,7 @@ for (i, (endEpoch, p)) in enumerate(logs):
 	# epoch, followed by the loss
 	bValRank1 = re.findall(r'Validation-accuracy=(.*)', rows)
 	#bValRank5 = re.findall(r'Validation-top_k_accuracy_5=(.*)', rows)
-	bValLoss = re.findall(r'Validation-cross-entropy=(.*)', rows)
+	bValLoss = re.findall(r'Validation-center_loss=(.*)', rows)
 
 	# convert the validation rank-1, rank-5, and loss lists to floats
 	bValRank1 = [float(x) for x in bValRank1]
@@ -120,7 +124,7 @@ ax2 = ax1.twinx()   # mirror them
 ta = ax2.plot(np.arange(0, len(trainRank1)), trainRank1, 'tab:purple', label="train_acc")
 va = ax2.plot(np.arange(0, len(valRank1)), valRank1, 'tab:gray', label="val_acc")
 
-tsa = ax2.axhline(y=0.9300, color='g', linestyle=':', label="test_acc")
+tsa = ax2.axhline(y=0.9571, color='g', linestyle=':', label="test_acc")
 
 lns = tl+vl+ta+va
 labs = [l.get_label() for l in lns]
